@@ -1,4 +1,4 @@
-package CSC110.monopoly.testing;
+package CSC110.monopoly.cards;
 
 public class ChanceCard {
 	
