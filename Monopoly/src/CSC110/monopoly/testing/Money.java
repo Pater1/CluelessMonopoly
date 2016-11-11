@@ -1,5 +1,5 @@
 package CSC110.monopoly.testing;
 
-public class ChanceCard {
-	
+public class Money {
+
 }
