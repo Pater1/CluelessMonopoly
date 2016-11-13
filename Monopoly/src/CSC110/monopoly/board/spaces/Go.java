@@ -12,12 +12,13 @@ public class Go implements BoardSpace {
 		return g;
 	}
 
+	//landing on and passing Go do the same thing
 	public void LandOnSpace(Player whoLanded) {
-		return;
+		// TODO Give player $
 	}
 
 	public void PassSpace(Player whoPassed) {
-		// TODO Give player $ ($20?)
+		// TODO Give player $
 	}
 
 }

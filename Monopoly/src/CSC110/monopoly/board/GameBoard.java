@@ -1,13 +1,16 @@
 package CSC110.monopoly.board;
 
+import CSC110.monopoly.board.spaces.CardDraw;
 import CSC110.monopoly.board.spaces.Go;
 import CSC110.monopoly.board.spaces.Property;
 import CSC110.monopoly.board.spaces.Property.PropertyGroup;
 import CSC110.monopoly.board.spaces.modifiers.Construction;
 import CSC110.monopoly.board.spaces.modifiers.Hotel;
 import CSC110.monopoly.board.spaces.modifiers.House;
+import CSC110.monopoly.cards.Deck;
 
 public class GameBoard {
+	private Deck communityChest = Deck.CommunityChestDeck(), chance = Deck.ChanceDeck();
 	public BoardSpace[] board = new BoardSpace[]{
 			//Go --corner
 			Go._NewGo(20),
@@ -20,6 +23,7 @@ public class GameBoard {
 					Hotel._NewHotel(100,250)
 			}),
 			//Community Chest
+			CardDraw._NewCardDraw(communityChest),
 			//Baltic Avenue -Property-Brown
 			Property._MakeNewProperty("Baltic Avenue", PropertyGroup.Brown, 60, 4, new Construction[]{
 					House._NewHouse(50,20),
@@ -39,6 +43,7 @@ public class GameBoard {
 					Hotel._NewHotel(100,550)
 			}),
 			//Chance
+			CardDraw._NewCardDraw(chance),
 			//Vermont Avenue -Property-LightBlue
 			Property._MakeNewProperty("Vermont Avenue", PropertyGroup.LightBlue, 100, 6, new Construction[]{
 					House._NewHouse(50,30),
@@ -91,6 +96,7 @@ public class GameBoard {
 					Hotel._NewHotel(200,950)
 			}),
 			//Community Chest
+			CardDraw._NewCardDraw(communityChest),
 			//Tennessee Avenue -Property-Orange
 			Property._MakeNewProperty("Tennessee Avenue", PropertyGroup.Orange, 180, 14, new Construction[]{
 					House._NewHouse(100,70),
@@ -117,6 +123,7 @@ public class GameBoard {
 					Hotel._NewHotel(300,1050)
 			}),
 			//Chance
+			CardDraw._NewCardDraw(chance),
 			//Indiana Avenue -Property-Red
 			Property._MakeNewProperty("Indiana Avenue", PropertyGroup.Red, 220, 18, new Construction[]{
 					House._NewHouse(150,90),
@@ -176,7 +183,8 @@ public class GameBoard {
 					House._NewHouse(200,1100),
 					Hotel._NewHotel(400,1275)
 			}),
-			//Community Chest
+			//Community ChestC
+			CardDraw._NewCardDraw(communityChest),
 			//Pennsylvania Avenue -Property-Green
 			Property._MakeNewProperty("Pennsylvania Avenue", PropertyGroup.Green, 320, 28, new Construction[]{
 					House._NewHouse(200,150),
@@ -187,6 +195,7 @@ public class GameBoard {
 			}),
 			//Short Line -Property-RailRoad
 			//Chance
+			CardDraw._NewCardDraw(chance),
 			//Park Place -Property-Blue
 			Property._MakeNewProperty("Park Place", PropertyGroup.Blue, 350, 35, new Construction[]{
 					House._NewHouse(200,175),

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="CSC110.monopoly.board.BoardSpace"/>
 <fullyQualifiedTypeName name="CSC110.monopoly.testing.Player"/>
 <fullyQualifiedTypeName name="CSC110.monopoly.board.spaces.Property.PropertyGroup"/>
 <fullyQualifiedTypeName name="CSC110.monopoly.board.spaces.modifiers.Construction"/>
 <fullyQualifiedTypeName name="CSC110.monopoly.board.spaces.modifiers.Hotel"/>
+<fullyQualifiedTypeName name="CSC110.monopoly.board.BoardSpace"/>
+<fullyQualifiedTypeName name="CSC110.monopoly.cards.Card"/>
+<fullyQualifiedTypeName name="CSC110.monopoly.cards.Deck"/>
 </qualifiedTypeNameHistroy>

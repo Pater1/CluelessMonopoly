@@ -33,9 +33,9 @@ public class Property implements BoardSpace {
 	}
 	
 	public void LandOnSpace(Player whoLanded){
-		
+		//TODO: UI to buy property
 	}
 	public void PassSpace(Player whoPassed){
-		
+		return; //Properties don't do anything when passed
 	}
 }
