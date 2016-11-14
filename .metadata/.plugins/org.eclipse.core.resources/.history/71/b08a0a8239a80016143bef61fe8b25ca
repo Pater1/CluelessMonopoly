@@ -1,5 +1,0 @@
-package CSC110.monopoly.board;
-
-public class GameBoard {
-	BoardSpace[] = new BoardSpace[36];
-}

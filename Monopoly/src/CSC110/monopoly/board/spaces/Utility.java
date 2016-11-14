@@ -2,7 +2,7 @@ package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.PurchasableSpace;
-import CSC110.monopoly.testing.Player;
+import CSC110.monopoly.player.Player;
 
 public class Utility implements PurchasableSpace{
 	private String utilityName;
@@ -44,5 +44,11 @@ public class Utility implements PurchasableSpace{
 		util.twoMult = twoOwnedMultiplyer;
 		util.whoOwns = null;
 		return util;
+	}
+
+	@Override
+	public String[] Render(Player[] plas) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

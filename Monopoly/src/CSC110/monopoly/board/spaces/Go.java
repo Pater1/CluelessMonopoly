@@ -1,7 +1,8 @@
 package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
-import CSC110.monopoly.testing.Player;
+import CSC110.monopoly.board.RenderAssistant;
+import CSC110.monopoly.player.Player;
 
 public class Go implements BoardSpace {
 	private int cashGo = 20;
@@ -19,6 +20,12 @@ public class Go implements BoardSpace {
 
 	public void PassSpace(Player whoPassed) {
 		// TODO Give player $
+	}
+
+	@Override
+	public String[] Render(Player[] plas) {
+		// TODO Auto-generated method stub
+		return RenderAssistant.SpliceTile(new String[]{"GO"});
 	}
 
 }

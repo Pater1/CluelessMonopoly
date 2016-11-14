@@ -2,7 +2,7 @@ package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.PurchasableSpace;
-import CSC110.monopoly.testing.Player;
+import CSC110.monopoly.player.Player;
 
 public class RailRoad implements PurchasableSpace{
 	private String railName;
@@ -45,5 +45,11 @@ public class RailRoad implements PurchasableSpace{
 		rail.perOwnedMultiplyer = ownedMultiplyer;
 		rail.whoOwns = null;
 		return rail;
+	}
+
+	@Override
+	public String[] Render(Player[] plas) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
