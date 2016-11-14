@@ -1,5 +1,7 @@
 package CSC110.monopoly.cards;
 
+import CSC110.monopoly.cards.comchest.AdvanceToGoCC;
+
 public class Deck {
 	private Card[] totalCards, currentCards;
 	

@@ -1,4 +1,4 @@
-package CSC110.monopoly.cards;
+package CSC110.monopoly.cards.comchest;
 
 public class BankErrorInYourFavorCC {
 

@@ -1,4 +1,6 @@
-package CSC110.monopoly.cards;
+package CSC110.monopoly.cards.comchest;
+
+import CSC110.monopoly.cards.Card;
 
 public class AdvanceToGoCC implements Card {
 
