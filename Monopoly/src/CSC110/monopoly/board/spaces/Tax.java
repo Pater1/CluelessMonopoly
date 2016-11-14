@@ -1,5 +1,24 @@
 package CSC110.monopoly.board.spaces;
 
-public class Tax {
+import CSC110.monopoly.board.BoardSpace;
+import CSC110.monopoly.testing.Player;
 
+public class Tax implements BoardSpace {
+	private String taxName;
+	private int taxAmount;
+	
+	public static Tax _NewTax(String name, int amountToTax){
+		Tax tx = new Tax();
+		tx.taxName = name;
+		tx.taxAmount = amountToTax;
+		return tx;
+	}
+
+	public void LandOnSpace(Player whoLanded) {
+		// TODO Take money from player at tax
+	}
+
+	public void PassSpace(Player whoPassed) {
+		return;
+	}
 }

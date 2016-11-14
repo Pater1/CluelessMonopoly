@@ -1,10 +1,11 @@
 package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
+import CSC110.monopoly.board.PurchasableSpace;
 import CSC110.monopoly.board.spaces.modifiers.*;
 import CSC110.monopoly.testing.Player;
 
-public class Property implements BoardSpace {
+public class Property implements PurchasableSpace {
 	public enum PropertyGroup{
 		Brown,
 		LightBlue,
@@ -14,13 +15,44 @@ public class Property implements BoardSpace {
 		Yellow,
 		Green,
 		Blue,
-		RailRoad,
 		Utility
 	}
 	private PropertyGroup group;
 	private String propertyName;
 	private int purchasePrice, rentCost;
- 	private Construction[] developments = new Construction[5];
+ 	private Construction[] developments;
+ 	private Player whoOwns;
+	
+	public void LandOnSpace(Player whoLanded){
+		if(whoOwns == null){
+			//TODO: UI to buy property
+		}else if(whoLanded != whoOwns){
+			//TODO: take rent from whoLanded
+		}
+	}
+	public void PassSpace(Player whoPassed){
+		return;
+	}
+
+	public void Purchase(Player whoPurchase) {
+		// TODO Auto-generated method stub
+	}
+
+	public void Sell(Player whoPurchase) {
+		// TODO Auto-generated method stub
+	}
+
+	public void Mortgage(Player whoPurchase) {
+		// TODO Auto-generated method stub
+	}
+
+	public void Upgrade(Player whoPurchase) {
+		// TODO Auto-generated method stub
+	}
+
+	public void DownGrade(Player whoPurchase) {
+		// TODO Auto-generated method stub
+	}
 
 	public static Property _MakeNewProperty(String name, PropertyGroup propGroup, int price, int rent, Construction[] possibleDevelopments){
 		Property prop = new Property();
@@ -29,13 +61,7 @@ public class Property implements BoardSpace {
 		prop.rentCost = rent;
 		prop.developments = possibleDevelopments;
 		prop.group = propGroup;
+		prop.whoOwns = null;
 		return prop;
-	}
-	
-	public void LandOnSpace(Player whoLanded){
-		//TODO: UI to buy property
-	}
-	public void PassSpace(Player whoPassed){
-		return; //Properties don't do anything when passed
 	}
 }
