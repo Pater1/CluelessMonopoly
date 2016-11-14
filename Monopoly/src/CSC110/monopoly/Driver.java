@@ -1,8 +1,9 @@
 package CSC110.monopoly;
 
 public class Driver {
-	public static void main(String [ ] args){
-		start();
+	public void main(String [ ] args){
+		Game monopoly = new Game();
+		monopoly.Start();
 	}
 	//hyphen after char when asking for input
 	
