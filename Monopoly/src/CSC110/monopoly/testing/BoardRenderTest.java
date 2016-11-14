@@ -1,6 +1,7 @@
 package CSC110.monopoly.testing;
 
 import CSC110.monopoly.board.GameBoard;
+import CSC110.monopoly.player.Player;
 
 public class BoardRenderTest {
 
