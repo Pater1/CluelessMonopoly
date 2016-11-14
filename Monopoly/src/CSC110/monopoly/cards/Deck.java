@@ -39,7 +39,8 @@ public class Deck {
 	public static Deck CommunityChestDeck(){
 		//TODO: return a Deck that holds the community chest cards
 		Card[] CCCards = new Card[15];
-		Deck CCDeck = Shuffle(CCDeck);		return CCDeck;
+		//Deck CCDeck = Shuffle(CCDeck);		
+		return CCDeck;
 	}
 	public static Deck ChanceDeck(){
 		//TODO: return a Deck that holds the chance cards
