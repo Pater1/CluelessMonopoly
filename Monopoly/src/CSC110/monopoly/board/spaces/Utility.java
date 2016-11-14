@@ -2,7 +2,7 @@ package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.PurchasableSpace;
-import CSC110.monopoly.player.Player;
+import CSC110.monopoly.player.Player; //random comment here
 
 public class Utility implements PurchasableSpace{
 	private String utilityName;
