@@ -1,6 +1,7 @@
 package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
+import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.cards.Card;
 import CSC110.monopoly.cards.Deck;
 import CSC110.monopoly.testing.Player;
@@ -20,5 +21,10 @@ public class CardDraw implements BoardSpace{
 		CardDraw crd = new CardDraw();
 		crd.deck = deckToDrawFrom;
 		return crd;
+	}
+
+	@Override
+	public String[] Render(Player[] plas) {
+		return RenderAssistant.SpliceTile(new String[]{"DRAW A CARD"});
 	}
 }

@@ -1,5 +1,7 @@
 package CSC110.monopoly.board;
 
+import java.util.ArrayList;
+
 import CSC110.monopoly.board.spaces.CardDraw;
 import CSC110.monopoly.board.spaces.FreeSpace;
 import CSC110.monopoly.board.spaces.Go;
@@ -13,9 +15,46 @@ import CSC110.monopoly.board.spaces.modifiers.Construction;
 import CSC110.monopoly.board.spaces.modifiers.Hotel;
 import CSC110.monopoly.board.spaces.modifiers.House;
 import CSC110.monopoly.cards.Deck;
+import CSC110.monopoly.testing.Player;
 
 public class GameBoard {
 	public BoardSpace[] board = _NewBoard();
+	
+	public String RenderToConsole(Player[] plas, int boardWidth){
+		ArrayList<String[]> brd = new ArrayList<String[]>();
+		for(int i = 0; i < board.length; i++){
+			String[] spc = board[i].Render(plas);
+			if(spc != null && spc.length > 0){
+				brd.add(spc);
+			}
+		}
+		
+		ArrayList<String> mezinine = new ArrayList<String>();
+		int dropDepth = 0;
+		for(int i = 0; i < brd.size(); i++){
+			if(i%boardWidth == boardWidth-1) dropDepth ++;
+			for(int j = 0; j < brd.get(i).length; j++){
+				int y = ((brd.get(i).length) * dropDepth) + j;
+				if(mezinine.size() <= y){
+					mezinine.add(brd.get(i)[j]);
+				}else{
+					mezinine.set(y, mezinine.get(y) + brd.get(i)[j]);
+				}
+			}
+		}
+		
+		String ret = "";
+		for(int i = 0; i < mezinine.size(); i++){
+			ret += mezinine.get(i) + "\n";
+		}
+		return ret;
+	}
+	
+	public static GameBoard _NewGameBoard(){
+		GameBoard gmbrd = new GameBoard();
+		gmbrd.board = _NewBoard();
+		return gmbrd;
+	}
 			
 	private static BoardSpace[] _NewBoard(){
 		Deck communityChest = Deck.CommunityChestDeck(), chance = Deck.ChanceDeck();

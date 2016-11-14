@@ -21,4 +21,10 @@ public class Tax implements BoardSpace {
 	public void PassSpace(Player whoPassed) {
 		return;
 	}
+
+	@Override
+	public String[] Render(Player[] plas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

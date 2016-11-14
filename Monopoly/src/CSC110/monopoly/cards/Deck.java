@@ -38,8 +38,8 @@ public class Deck {
 	
 	public static Deck CommunityChestDeck(){
 		//TODO: return a Deck that holds the community chest cards
-		Card[] CCCards = new Card[];
-		Deck CCDeck =  Shuffle(CCDeck);
+		Card[] CCCards = new Card[0];
+		Deck CCDeck =  new Deck();//Shuffle(CCDeck);
 		return CCDeck;
 	}
 	public static Deck ChanceDeck(){

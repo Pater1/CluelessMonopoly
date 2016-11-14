@@ -64,4 +64,9 @@ public class Property implements PurchasableSpace {
 		prop.whoOwns = null;
 		return prop;
 	}
+	@Override
+	public String[] Render(Player[] plas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

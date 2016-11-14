@@ -45,4 +45,10 @@ public class Utility implements PurchasableSpace{
 		util.whoOwns = null;
 		return util;
 	}
+
+	@Override
+	public String[] Render(Player[] plas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

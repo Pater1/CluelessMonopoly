@@ -46,4 +46,10 @@ public class RailRoad implements PurchasableSpace{
 		rail.whoOwns = null;
 		return rail;
 	}
+
+	@Override
+	public String[] Render(Player[] plas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

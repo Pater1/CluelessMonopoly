@@ -3,6 +3,7 @@ package CSC110.monopoly.board.spaces;
 import java.util.ArrayList;
 
 import CSC110.monopoly.board.BoardSpace;
+import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.testing.Player;
 
 public class Jail implements BoardSpace{
@@ -46,6 +47,15 @@ public class Jail implements BoardSpace{
 			jl.jailedPlayer = toJail;
 			jl.turnsInJail = forTurns;
 			return jl;
+		}
+	}
+
+	@Override
+	public String[] Render(Player[] plas) {
+		if(holding){
+			return RenderAssistant.SpliceTile(new String[]{"JAIL"});
+		}else{
+			return RenderAssistant.SpliceTile(new String[]{"GO TO JAIL"});
 		}
 	}
 }

@@ -6,7 +6,9 @@
 <fullyQualifiedTypeName name="CSC110.monopoly.board.BoardSpace"/>
 <fullyQualifiedTypeName name="CSC110.monopoly.cards.Card"/>
 <fullyQualifiedTypeName name="CSC110.monopoly.cards.Deck"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="CSC110.monopoly.testing.Player"/>
 <fullyQualifiedTypeName name="CSC110.monopoly.board.PurchasableSpace"/>
+<fullyQualifiedTypeName name="CSC110.monopoly.testing.Player"/>
+<fullyQualifiedTypeName name="CSC110.monopoly.board.GameBoard"/>
+<fullyQualifiedTypeName name="CSC110.monopoly.board.RenderAssistant"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
