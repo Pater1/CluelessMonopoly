@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.RenderAssistant;
-import CSC110.monopoly.testing.Player;
+import CSC110.monopoly.player.Player;
 
 public class Jail implements BoardSpace{
 	private int holdingDuration;

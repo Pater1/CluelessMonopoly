@@ -11,4 +11,5 @@
 <fullyQualifiedTypeName name="CSC110.monopoly.board.GameBoard"/>
 <fullyQualifiedTypeName name="CSC110.monopoly.board.RenderAssistant"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="CSC110.monopoly.player.Player"/>
 </qualifiedTypeNameHistroy>

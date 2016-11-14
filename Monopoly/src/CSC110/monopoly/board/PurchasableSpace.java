@@ -1,6 +1,6 @@
 package CSC110.monopoly.board;
 
-import CSC110.monopoly.testing.Player;
+import CSC110.monopoly.player.Player;
 
 public interface PurchasableSpace extends BoardSpace{
 	public void Purchase(Player whoPurchase);

@@ -15,7 +15,7 @@ import CSC110.monopoly.board.spaces.modifiers.Construction;
 import CSC110.monopoly.board.spaces.modifiers.Hotel;
 import CSC110.monopoly.board.spaces.modifiers.House;
 import CSC110.monopoly.cards.Deck;
-import CSC110.monopoly.testing.Player;
+import CSC110.monopoly.player.Player;
 
 public class GameBoard {
 	public BoardSpace[] board = _NewBoard();

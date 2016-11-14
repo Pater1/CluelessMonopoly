@@ -3,7 +3,7 @@ package CSC110.monopoly.board.spaces;
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.PurchasableSpace;
 import CSC110.monopoly.board.spaces.modifiers.*;
-import CSC110.monopoly.testing.Player;
+import CSC110.monopoly.player.Player;
 
 public class Property implements PurchasableSpace {
 	public enum PropertyGroup{
