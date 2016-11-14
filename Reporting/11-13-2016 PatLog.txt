@@ -1,0 +1,38 @@
+Tasks Done:
+	Finished stubbing game board.
+	
+Tasks To Do:
+	Render Board to Console.
+		Prerequisites: 
+			Getter Method for Player identifier as String
+	Write Space Behaviors.
+		Prerequisites: 
+			Money handling threw Player (GiveMoney, TakeMoney).
+			DieRolling method that returns int 1-6 !-Unasigned-!
+			Standardized user interaction API menu-selection method
+	Write Player Movement.
+		Prerequisites:
+			Getter and Setter Methods for Player location (I'd recommend tracking location as an int)
+			-DieRolling method that returns int 1-6 !-Unasigned-!
+
+Code needed to proceed:
+	Money handling through Player (GiveMoney, TakeMoney).
+		Bryson
+		!-Undated-!
+	Getter and Setter Methods for Player location (I'd recommend tracking location as an int)
+		Damien
+		!-Undated-!
+	Getter Method for Player identifier as String
+		Damien
+		!-Undated-!
+	Standardized user interaction API menu-selection method
+		Jake
+		!-Undated-!
+	DieRolling method that returns int 1-6 
+		!-Unasigned-!
+		
+1 Unasigned delivable required.
+	Recommend assigning to Jake.
+	
+4 Undated deliverables found.
+	Will negotiate deadlines in in-class meeting Tuesday
