@@ -9,14 +9,23 @@ public class RailRoad implements PurchasableSpace{
 	private String railName;
 	private int baseRent, purchasePrice, perOwnedMultiplyer;
  	private Player whoOwns;
+ 	
+ 	private int getRent(){
+ 		int numberOwnerOwns = 0;
+ 		
+ 		
+ 		
+ 		return baseRent * (perOwnedMultiplyer * (numberOwnerOwns -1));
+ 	}
 	
 	public void LandOnSpace(Player whoLanded) {
 		if(whoOwns == null){
 			//TODO: UI to buy property
 		}else if(whoLanded != whoOwns){
-			//TODO: take rent from whoLanded
-			//rent = baseRent * (perOwnedMultiplyer * (number of owned railroads by this one's owner -1))
+			whoLanded.TakePlayerMoney(getRent());
+			whoOwns.GivePlayerMoney(getRent());
 		}
+		//rent = baseRent * (perOwnedMultiplyer * (number of owned railroads by this one's owner -1))
 	}
 
 	public void PassSpace(Player whoPassed) {
@@ -57,7 +66,7 @@ public class RailRoad implements PurchasableSpace{
 				railName,
 				"Rent: " + thisRent(),
 				(whoOwns == null) ? "Purchase: " + purchasePrice : "Mortgage: " + (purchasePrice),
-				"Put players here",
+				RenderAssistant.FitPlayerName(plas),
 				"Owner: " + whoOwns
 		});
 	}

@@ -1,17 +1,36 @@
 package CSC110.monopoly.board;
 
+import CSC110.monopoly.player.Player;
+
 public class RenderAssistant {
-	public static String EmptyLine(){
+	public static final String EmptyLine(){
 		return "*                     *";
 	}
-	public static String BorderLine(){
+	public static final String BorderLine(){
 		return "***********************";
 	}
-	public static String BlankLine(){
+	public static final String BlankLine(){
 		return "                       ";
 	}
 	
-
+	public static String FitPlayerName(Player[] players){
+		return FitPlayerName(players, BlankLine());
+	}
+	public static String FitPlayerName(Player[] players, String fitIn){
+		String names = "", initials = "";
+		for(int i = 0; i < players.length; i++){
+			String ident = players[i].Identifier("");
+			names += ident + ",";
+			initials += ident.charAt(0) + ",";
+		}
+		
+		if(names.length() > fitIn.length()-2){
+			return initials;
+		}else{
+			return names;
+		}
+	}
+	
 	public static String[] SpliceTile(String[] splicePerLine){
 		String[] ret = BaseTile();
 		for(int i = 1; i < ret.length-1; i++){

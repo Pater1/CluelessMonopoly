@@ -10,12 +10,18 @@ public class Utility implements PurchasableSpace{
  	private int oneMult, twoMult, purchase;
  	private Player whoOwns;
 
+ 	private int getRent(){
+ 		boolean ownsOtherUtil = false;
+ 		int dieRoll = 0; //replace with DieRoll method
+ 		return dieRoll * (ownsOtherUtil ? oneMult : twoMult);
+ 	}
+ 	
 	public void LandOnSpace(Player whoLanded) {
 		if(whoOwns == null){
 			//TODO: UI to buy property
 		}else if(whoLanded != whoOwns){
-			//TODO: take rent from whoLanded
-			//rent = dieRoll * ((whoOwns owns only one utility) ? oneMult : twoMult)
+			whoLanded.TakePlayerMoney(getRent());
+			whoOwns.GivePlayerMoney(getRent());
 		}
 	}
 
@@ -24,13 +30,13 @@ public class Utility implements PurchasableSpace{
 	}
 
 	public void Purchase(Player whoPurchase) {
-		// TODO Auto-generated method stub
-		
+		whoPurchase.TakePlayerMoney(purchase);
+		whoOwns = whoPurchase;
 	}
 
 	public void Sell(Player whoPurchase) {
-		// TODO Auto-generated method stub
-		
+		whoPurchase.GivePlayerMoney(purchase/2);
+		whoOwns = null;
 	}
 
 	public void Mortgage(Player whoPurchase) {
@@ -57,7 +63,7 @@ public class Utility implements PurchasableSpace{
 				utilityName,
 				"Rent: " + thisRent(),
 				(whoOwns == null) ? "Purchase: " + purchase : "Mortgage: " + (purchase),
-				"Put players here",
+				RenderAssistant.FitPlayerName(plas),
 				"Owner: " + whoOwns
 		});
 	}

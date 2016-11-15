@@ -25,7 +25,13 @@ public class Go implements BoardSpace {
 	@Override
 	public String[] Render(Player[] plas) {
 		// TODO Auto-generated method stub
-		return RenderAssistant.SpliceTile(new String[]{"GO","","--->"});
+		return RenderAssistant.SpliceTile(new String[]{
+				"GO",
+				"",
+				"--->",
+				"",
+				RenderAssistant.FitPlayerName(plas)
+			});
 	}
 
 }

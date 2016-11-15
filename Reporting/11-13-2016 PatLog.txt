@@ -10,26 +10,20 @@ Tasks To Do:
 			Money handling threw Player (GiveMoney, TakeMoney).
 			DieRolling method that returns int 1-6 !-Unasigned-!
 			Standardized user interaction API menu-selection method
-	Write Player Movement.
-		Prerequisites:
-			Getter and Setter Methods for Player location (I'd recommend tracking location as an int)
-			-DieRolling method that returns int 1-6 !-Unasigned-!
 
 Code needed to proceed:
 	Money handling through Player (GiveMoney, TakeMoney).
 		Bryson
-		!-Undated-!
-	Getter and Setter Methods for Player location (I'd recommend tracking location as an int)
-		Damien
-		!-Undated-!
+		11/15/2016
 	Getter Method for Player identifier as String
 		Damien
-		!-Undated-!
+		11/15/2016
 	Standardized user interaction API menu-selection method
 		Jake
-		!-Undated-!
+		11/15/2016
 	DieRolling method that returns int 1-6 
-		!-Unasigned-!
+		Jake
+		11/17/2016
 		
 1 Unasigned delivable required.
 	Recommend assigning to Jake.
