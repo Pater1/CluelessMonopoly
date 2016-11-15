@@ -7,6 +7,15 @@ public class Hotel implements Construction{
 	public void Purchase(){
 		
 	}
+	public void Sell(){
+		
+	}
+	public boolean IsPurchased(){
+		return isPurchased;
+	}
+	public int GetRent(){
+		return newRent;
+	}
 	
 	public static Hotel _NewHotel(int rent, int purchase){
 		Hotel hot = new Hotel();

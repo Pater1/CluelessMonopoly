@@ -52,10 +52,16 @@ public class Jail implements BoardSpace{
 
 	@Override
 	public String[] Render(Player[] plas) {
+		String id = "";
 		if(holding){
-			return RenderAssistant.SpliceTile(new String[]{"JAIL"});
+			id = "JAIL";
 		}else{
-			return RenderAssistant.SpliceTile(new String[]{"GO TO JAIL"});
+			id = "GO TO JAIL";
 		}
+		return RenderAssistant.SpliceTile(new String[]{
+				id,
+				"",
+				RenderAssistant.FitPlayerName(plas)
+		});
 	}
 }

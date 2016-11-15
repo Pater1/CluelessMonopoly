@@ -24,6 +24,10 @@ public class CardDraw implements BoardSpace{
 	}
 
 	public String[] Render(Player[] plas) {
-		return RenderAssistant.SpliceTile(new String[]{"DRAW A CARD"});
+		return RenderAssistant.SpliceTile(new String[]{
+				"DRAW A CARD",
+				"",
+				RenderAssistant.FitPlayerName(plas)
+			});
 	}
 }

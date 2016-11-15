@@ -34,6 +34,9 @@ public class FreeSpace implements BoardSpace{
 		 *   Owner: Thimble    *
 		 ***********************
 		 */
-		return RenderAssistant.SpliceTile(new String[]{"FREE PARKING"});
+		return RenderAssistant.SpliceTile(new String[]{
+				"FREE PARKING",
+				"",
+				RenderAssistant.FitPlayerName(plas)});
 	}
 }

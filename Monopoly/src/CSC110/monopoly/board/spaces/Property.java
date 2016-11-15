@@ -23,12 +23,21 @@ public class Property implements PurchasableSpace {
 	private int purchasePrice, rentCost;
  	private Construction[] developments;
  	private Player whoOwns;
+ 	
+ 	private int getRent(){
+ 		int ret = rentCost;
+ 		for(int i = 0; i < developments.length; i++){
+ 			if(developments[i].IsPurchased()) ret = developments[i].GetRent();
+ 		}
+ 		return ret;
+ 	}
 	
 	public void LandOnSpace(Player whoLanded){
 		if(whoOwns == null){
 			//TODO: UI to buy property
 		}else if(whoLanded != whoOwns){
-			//TODO: take rent from whoLanded
+			whoLanded.TakePlayerMoney(getRent());
+			whoOwns.GivePlayerMoney(getRent());
 		}
 	}
 	public void PassSpace(Player whoPassed){
@@ -72,7 +81,7 @@ public class Property implements PurchasableSpace {
 				group.name(),
 				"Rent: " + rentCost,
 				(whoOwns == null) ? "Purchase: " + purchasePrice : "Mortgage: " + (purchasePrice),
-				"Put players here",
+				RenderAssistant.FitPlayerName(plas),
 				"Owner: " + whoOwns
 		});
 	}

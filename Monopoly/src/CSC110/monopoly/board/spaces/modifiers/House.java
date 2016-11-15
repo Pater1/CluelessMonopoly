@@ -15,4 +15,16 @@ public class House implements Construction{
 		hot.isPurchased = false;
 		return hot;
 	}
+
+	public void Sell() {
+		
+	}
+
+	public boolean IsPurchased() {
+		return isPurchased;
+	}
+	
+	public int GetRent(){
+		return newRent;
+	}
 }

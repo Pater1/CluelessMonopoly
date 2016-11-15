@@ -27,7 +27,9 @@ public class Tax implements BoardSpace {
 	public String[] Render(Player[] plas) {
 		return RenderAssistant.SpliceTile(new String[]{
 				taxName,
-				"Pay: " + taxAmount
+				"Pay: " + taxAmount,
+				"",
+				RenderAssistant.FitPlayerName(plas)
 		});
 	}
 }
