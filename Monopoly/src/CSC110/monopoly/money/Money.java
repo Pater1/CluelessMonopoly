@@ -10,7 +10,7 @@ public class Money {
 	int five = 0;
 	int one = 0;
 
-	public void makeChange(int money) {
+	public void changeToBills(int money) {
 		int change = (int) (Math.ceil(money * 500));
 		int fiveHundred = Math.round((int) change / 500);
 		change = change % 500;
@@ -27,22 +27,22 @@ public class Money {
 		int one = Math.round((int) change / 1);
 	}
 
-	public int getMoney() {
+	public int getCurrentMoney() {
 		int money = (fiveHundred * 500) + (oneHundred * 100) + (fifty * 50) + (twenty * 20) + (ten * 10) + (five * 5)
 				+ (one * 1);
 		return money;
 	}
 
-	public int giveMoney(int userMoney) {
+	public int givePlayerMoney(int userMoney) {
 
 		return userMoney;
 	}
 
-	public int takeMoney(int userMoney) {
+	public int takePayerMoney(int userMoney) {
 		return userMoney;
 	}
 
-	public int initMoney() {
+	public int initStartMoney() {
 		money = 1500;
 		return money;
 	}
