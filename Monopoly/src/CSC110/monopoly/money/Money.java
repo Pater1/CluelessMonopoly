@@ -1,7 +1,6 @@
 package CSC110.monopoly.money;
 
 public class Money {
-	int money = 0;
 	int fiveHundred = 0;
 	int oneHundred = 0;
 	int fifty = 0;
@@ -26,6 +25,7 @@ public class Money {
 	int one = Math.round((int) change / 1);
 	}
 	public int getMoney(){
+		int money = (fiveHundred * 500) + (oneHundred * 100) + (fifty * 50) + (twenty * 20) + (ten * 10) + (five * 5) + (one * 1);
 		return money;
 	}
 }

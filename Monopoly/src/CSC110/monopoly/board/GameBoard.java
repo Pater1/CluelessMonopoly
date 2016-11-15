@@ -21,6 +21,7 @@ public class GameBoard {
 	public BoardSpace[] board = _NewBoard();
 	
 	public String RenderToConsole(Player[] plas, int boardWidth){
+		//Get Renders
 		ArrayList<String[]> brd = new ArrayList<String[]>();
 		for(int i = 0; i < board.length; i++){
 			String[] spc = board[i].Render(plas);
@@ -29,20 +30,44 @@ public class GameBoard {
 			}
 		}
 		
+		//Sort for render
+		ArrayList<String[]> srt = new ArrayList<String[]>();
+		int col1 = 0, col2;
+		for(int i = 0; i < boardWidth; i++){
+			srt.add(i, brd.get(i));
+			
+			srt.add(brd.get(brd.size()/2+boardWidth-i-1));
+		}
+		col1 = boardWidth;
+		for(int i = boardWidth; i < brd.size()/2; i++){
+			srt.add(col1, brd.get(brd.size()-1-i+boardWidth));
+			col1++;
+
+			for(int j = 0; j < boardWidth-2; j++){
+				srt.add(col1, RenderAssistant.EmptyTile());
+				col1++;
+			}
+			
+			srt.add(col1, brd.get(i));
+			col1++;
+		}
+		
+		//Render to rows
 		ArrayList<String> mezinine = new ArrayList<String>();
-		int dropDepth = 0;
-		for(int i = 0; i < brd.size(); i++){
-			if(i%boardWidth == boardWidth-1) dropDepth ++;
-			for(int j = 0; j < brd.get(i).length; j++){
-				int y = ((brd.get(i).length) * dropDepth) + j;
+		int dropDepth = -1;
+		for(int i = 0; i < srt.size(); i++){
+			if(i%boardWidth == 0) dropDepth ++;
+			for(int j = 0; j < srt.get(i).length; j++){
+				int y = ((srt.get(i).length) * dropDepth) + j;
 				if(mezinine.size() <= y){
-					mezinine.add(brd.get(i)[j]);
+					mezinine.add(srt.get(i)[j]);
 				}else{
-					mezinine.set(y, mezinine.get(y) + brd.get(i)[j]);
+					mezinine.set(y, mezinine.get(y) + srt.get(i)[j]);
 				}
 			}
 		}
 		
+		//render to String
 		String ret = "";
 		for(int i = 0; i < mezinine.size(); i++){
 			ret += mezinine.get(i) + "\n";

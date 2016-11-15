@@ -1,6 +1,7 @@
 package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
+import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.player.Player;
 
 public class Tax implements BoardSpace {
@@ -24,7 +25,9 @@ public class Tax implements BoardSpace {
 
 	@Override
 	public String[] Render(Player[] plas) {
-		// TODO Auto-generated method stub
-		return null;
+		return RenderAssistant.SpliceTile(new String[]{
+				taxName,
+				"Pay: " + taxAmount
+		});
 	}
 }

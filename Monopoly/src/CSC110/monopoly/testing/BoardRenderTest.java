@@ -7,7 +7,7 @@ public class BoardRenderTest {
 
 	public static void main(String[] args) {
 		GameBoard gmbrd = GameBoard._NewGameBoard();
-		System.out.println(gmbrd.RenderToConsole(new Player[0], 10));
+		System.out.println(gmbrd.RenderToConsole(new Player[0], 11));
 	}
 
 }

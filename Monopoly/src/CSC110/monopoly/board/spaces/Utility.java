@@ -2,11 +2,12 @@ package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.PurchasableSpace;
+import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.player.Player; //random comment here
 
 public class Utility implements PurchasableSpace{
 	private String utilityName;
- 	private int oneMult, twoMult;
+ 	private int oneMult, twoMult, purchase;
  	private Player whoOwns;
 
 	public void LandOnSpace(Player whoLanded) {
@@ -37,18 +38,27 @@ public class Utility implements PurchasableSpace{
 		
 	}
 
-	public static Utility _NewUtility(String name, int purchase, int oneOwnedMultiplyer, int twoOwnedMultiplyer){
+	public static Utility _NewUtility(String name, int purchasePrice, int oneOwnedMultiplyer, int twoOwnedMultiplyer){
 		Utility util = new Utility();
 		util.utilityName = name;
+		util.purchase = purchasePrice;
 		util.oneMult = oneOwnedMultiplyer;
 		util.twoMult = twoOwnedMultiplyer;
 		util.whoOwns = null;
 		return util;
 	}
+	
+	private int thisRent(){
+		return 5;
+	}
 
-	@Override
 	public String[] Render(Player[] plas) {
-		// TODO Auto-generated method stub
-		return null;
+		return RenderAssistant.SpliceTile(new String[]{
+				utilityName,
+				"Rent: " + thisRent(),
+				(whoOwns == null) ? "Purchase: " + purchase : "Mortgage: " + (purchase),
+				"Put players here",
+				"Owner: " + whoOwns
+		});
 	}
 }

@@ -7,6 +7,9 @@ public class RenderAssistant {
 	public static String BorderLine(){
 		return "***********************";
 	}
+	public static String BlankLine(){
+		return "                       ";
+	}
 	
 
 	public static String[] SpliceTile(String[] splicePerLine){
@@ -26,6 +29,17 @@ public class RenderAssistant {
 			RenderAssistant.EmptyLine(),	
 			RenderAssistant.EmptyLine(),	
 			RenderAssistant.BorderLine(),	
+		};
+	}
+	public static String[] EmptyTile(){return new String[]{
+			RenderAssistant.BlankLine(),	
+			RenderAssistant.BlankLine(),	
+			RenderAssistant.BlankLine(),	
+			RenderAssistant.BlankLine(),	
+			RenderAssistant.BlankLine(),	
+			RenderAssistant.BlankLine(),	
+			RenderAssistant.BlankLine(),	
+			RenderAssistant.BlankLine(),	
 		};
 	}
 	

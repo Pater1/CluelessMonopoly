@@ -23,7 +23,6 @@ public class CardDraw implements BoardSpace{
 		return crd;
 	}
 
-	@Override
 	public String[] Render(Player[] plas) {
 		return RenderAssistant.SpliceTile(new String[]{"DRAW A CARD"});
 	}

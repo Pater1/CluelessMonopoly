@@ -2,6 +2,7 @@ package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.PurchasableSpace;
+import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.board.spaces.modifiers.*;
 import CSC110.monopoly.player.Player;
 
@@ -64,9 +65,15 @@ public class Property implements PurchasableSpace {
 		prop.whoOwns = null;
 		return prop;
 	}
-	@Override
+
 	public String[] Render(Player[] plas) {
-		// TODO Auto-generated method stub
-		return null;
+		return RenderAssistant.SpliceTile(new String[]{
+				propertyName,
+				group.name(),
+				"Rent: " + rentCost,
+				(whoOwns == null) ? "Purchase: " + purchasePrice : "Mortgage: " + (purchasePrice),
+				"Put players here",
+				"Owner: " + whoOwns
+		});
 	}
 }
