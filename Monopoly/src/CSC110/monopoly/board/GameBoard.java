@@ -32,13 +32,12 @@ public class GameBoard {
 		
 		//Sort for render
 		ArrayList<String[]> srt = new ArrayList<String[]>();
-		int col1 = 0, col2;
 		for(int i = 0; i < boardWidth; i++){
 			srt.add(i, brd.get(i));
 			
 			srt.add(brd.get(brd.size()/2+boardWidth-i-1));
 		}
-		col1 = boardWidth;
+		int col1 = boardWidth;
 		for(int i = boardWidth; i < brd.size()/2; i++){
 			srt.add(col1, brd.get(brd.size()-1-i+boardWidth));
 			col1++;
