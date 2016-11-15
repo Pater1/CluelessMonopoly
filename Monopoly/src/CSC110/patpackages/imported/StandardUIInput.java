@@ -224,7 +224,7 @@ private static BufferedReader input = new BufferedReader(new InputStreamReader(S
 	 */
 	public static String promptForInput(String prompt, boolean allowEmpty) throws IOException{
 		if(prompt == null){
-			throw new IllegalArgumentException("Please supply a user prompt. No null values (empty strings oaky though)!");
+			throw new IllegalArgumentException("Please supply a user prompt. No null values (empty strings okay though)!");
 		}
 		String userIn;
 		do{
