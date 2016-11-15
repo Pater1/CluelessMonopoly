@@ -1,15 +1,10 @@
 package CSC110.monopoly.player;
 
+import java.io.IOException;
+
 public class Piece implements Player{
 
-	/*public String player_I = "";
-	public String player_II = "";
-	public String player_III = "";
-	public String player_IV = "";
-	public String player_V = "";
-	public String player_VI = "";
-	public String player_VII = "";
-	public String player_VIII = "";*/
+	PieceName pieceName;
 	
 	@Override
 	public void GivePlayerMoney(int amountGiven) {
@@ -26,5 +21,10 @@ public class Piece implements Player{
 	public String Identifier(String playerPiece) {
 		return playerPiece;
 	}
-
+	
+	public static Piece choosePlayerPiece(String pieceName) throws IOException{
+		Piece playerPiece = new Piece();
+		
+		return playerPiece;
+	}
 }
