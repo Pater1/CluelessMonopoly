@@ -1,6 +1,7 @@
 package CSC110.monopoly.money;
 
 public class Money {
+	int money;
 	int fiveHundred = 0;
 	int oneHundred = 0;
 	int fifty = 0;
@@ -9,7 +10,7 @@ public class Money {
 	int five = 0;
 	int one = 0;
 	public void makeChange(int money){
-	int change = (int) (Math.ceil(money * 100));
+	int change = (int) (Math.ceil(money * 500));
 	int fiveHundred = Math.round((int)change/500);
 	change = change % 500;
 	int oneHundred = Math.round((int)change/100);
@@ -26,6 +27,17 @@ public class Money {
 	}
 	public int getMoney(){
 		int money = (fiveHundred * 500) + (oneHundred * 100) + (fifty * 50) + (twenty * 20) + (ten * 10) + (five * 5) + (one * 1);
+		return money;
+	}
+	public int giveMoney(int userMoney){
+		
+		return userMoney;
+	}
+	public int takeMoney(int userMoney){
+		return userMoney;
+	}
+	public int initMoney(){
+		money = 1500;
 		return money;
 	}
 }
