@@ -1,4 +1,5 @@
 package CSC110.monopoly.money;
+
 import CSC110.monopoly.board.RenderAssistant;
 
 public class Money {
@@ -27,6 +28,7 @@ public class Money {
 		change = change % 5;
 		one += Math.round((int) change / 1);
 	}
+
 	public void subChangeToBills(int money) {
 		int change = (int) (Math.ceil(money * 1));
 		fiveHundred -= Math.round((int) change / 500);
@@ -53,13 +55,28 @@ public class Money {
 	public int givePlayerMoney(int userMoney) {
 		addChangeToBills(userMoney);
 		money = getCurrentMoney();
-		
-		
+
 		return money;
 	}
-	RenderAssistant displayMoney = new RenderAssistant();
-	
-	
+
+	public String displayMoney() {
+
+		String[] bill500 = RenderAssistant.SpliceTile(new String[] { "500", "" + fiveHundred });
+		String[] bill100 = RenderAssistant.SpliceTile(new String[] { "100", "" + oneHundred });
+		String[] bill50 = RenderAssistant.SpliceTile(new String[] { "50", "" + fifty });
+		String[] bill20 = RenderAssistant.SpliceTile(new String[] { "20", "" + twenty });
+		String[] bill10 = RenderAssistant.SpliceTile(new String[] { "10", "" + ten });
+		String[] bill5 = RenderAssistant.SpliceTile(new String[] { "5", "" + five });
+		String[] bill1 = RenderAssistant.SpliceTile(new String[] { "1", "" + one });
+		return RenderAssistant.RenderArray(RenderAssistant.ConcantinateTiles(new String[][] {
+			bill500, 
+			bill100,
+			bill50,
+			bill20,
+			bill10,
+			bill5,
+			bill1}));
+	}
 
 	public int takePayerMoney(int userMoney) {
 		subChangeToBills(userMoney);

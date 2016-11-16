@@ -12,6 +12,8 @@ public class MoneyTesting {
 		userMoney.takePayerMoney(200);
 		System.out.println(userMoney.getCurrentMoney());
 		
+		System.out.println(userMoney.displayMoney());
+		
 	}
 
 }

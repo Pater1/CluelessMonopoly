@@ -42,6 +42,7 @@ public class RenderAssistant {
 		String[] outp = new String[tiles[0].length];
 		for(int i = 0; i < outp.length; i++){
 			for(int j = 0; j < tiles.length; j++){
+				if(outp[i] == null) outp[i] = "";
 				outp[i] += tiles[j][i];
 			}
 		}
