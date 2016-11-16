@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Piece implements Player{
 
-	PieceName pieceName;
+	//PieceName pieceName;
 	
 	@Override
 	public void GivePlayerMoney(int amountGiven) {

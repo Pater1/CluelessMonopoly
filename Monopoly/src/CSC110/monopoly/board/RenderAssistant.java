@@ -31,6 +31,23 @@ public class RenderAssistant {
 		}
 	}
 	
+	public static String RenderArray(String[] array){
+		String ret = "";
+		for(int i = 0; i < array.length; i++){
+			ret += array[i] + "\n";
+		}
+		return ret;
+	}
+	public static String[] ConcantinateTiles(String[][] tiles){
+		String[] outp = new String[tiles[0].length];
+		for(int i = 0; i < outp.length; i++){
+			for(int j = 0; j < tiles.length; j++){
+				outp[i] += tiles[j][i];
+			}
+		}
+		return outp;
+	}
+	
 	public static String[] SpliceTile(String[] splicePerLine){
 		String[] ret = BaseTile();
 		for(int i = 1; i < ret.length-1; i++){
