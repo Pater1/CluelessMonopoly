@@ -1,4 +1,5 @@
 package CSC110.monopoly.money;
+import CSC110.monopoly.board.RenderAssistant;
 
 public class Money {
 	int money = 0;
@@ -56,6 +57,9 @@ public class Money {
 		
 		return money;
 	}
+	RenderAssistant displayMoney = new RenderAssistant();
+	
+	
 
 	public int takePayerMoney(int userMoney) {
 		subChangeToBills(userMoney);
