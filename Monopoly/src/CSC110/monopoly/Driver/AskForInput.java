@@ -1,4 +1,4 @@
-package CSC110.monopoly;
+package CSC110.monopoly.Driver;
 
 import java.io.IOException;
 
@@ -29,6 +29,11 @@ public class AskForInput {
 	}
 	public static String enumInput(String prompt) throws IOException {
 		return StandardUIInput.promptForInput(prompt, false);
+		
+	}
+	public static boolean boolInput (String prompt, String trueString, String falseString) throws IOException {
+		return StandardUIInput.promptForBool(prompt, trueString, falseString);
+		
 		
 	}
 }
