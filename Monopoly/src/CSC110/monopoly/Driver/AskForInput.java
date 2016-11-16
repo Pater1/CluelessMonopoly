@@ -1,4 +1,4 @@
-package CSC110.monopoly;
+package CSC110.monopoly.Driver;
 
 import java.io.IOException;
 

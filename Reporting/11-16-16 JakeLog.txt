@@ -1,0 +1,39 @@
+Tasks Done:
+	TODONE 1. askForInputs
+	TODONE 2.GameReplay
+	TODONE 3.
+	...
+	
+Tasks To Do:
+	TODO 1.gameDice
+		Prerequisites: 
+	TODO 2.Test code
+		Prerequisites:need everyone to complete their section and ill put them together 
+	TODO 3.
+		Prerequisites:
+	...
+
+Code Needed To Proceed:
+	Note: List all Prerequisites listed under Tasks To Do header without repetition
+	PREREC 1:
+		Developer assigned to deliver.
+		Deadline for this Deliverable.
+	PREREC 2:
+		Developer assigned to deliver.
+		Deadline for this Deliverable.
+	PREREC 3:
+		Developer assigned to deliver.
+		Deadline for this Deliverable.
+	...
+		
+X Unasigned delivable required.
+	Note: replace X with count of deliverables in Code Needed To Proceed header that do not have a developer assigned. 
+	
+	Recommend assigning /Prerequisite/ to /Developer/.
+	... for each unassigned Prerec
+	
+X Undated deliverables found.
+	Note: replace X with count of deliverables in Code Needed To Proceed header that do not have an assigned deadline. 
+	
+	Recommend deadline for /Prerequisite/ to be /Date/.
+	... for each undated Prerec

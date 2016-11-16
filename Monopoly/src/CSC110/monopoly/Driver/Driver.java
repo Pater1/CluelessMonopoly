@@ -1,4 +1,4 @@
-package CSC110.monopoly;
+package CSC110.monopoly.Driver;
 
 public class Driver {
 	public void main(String [] args){
