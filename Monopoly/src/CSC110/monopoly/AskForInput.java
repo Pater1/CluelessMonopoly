@@ -15,8 +15,7 @@ public class AskForInput {
 		for (int i=0;i<options.length;i++) {
 			int charAsInt = (int) a;
 			if (charAsInt > 122) {
-				System.out.println("Oops, keep the prompt under a max of 26");
-				System.exit(0);
+				throw new IOException("Keep your number of prompts under 26");
 			}
 			charAsInt++;
 			char intAsChar = (char) charAsInt;
