@@ -2,6 +2,7 @@ package CSC110.monopoly.Driver;
 
 import java.io.IOException;
 
+import CSC110.monopoly.player.PieceName;
 import CSC110.patpackages.imported.StandardUIInput;
 
 public class AskForInput {
@@ -27,8 +28,9 @@ public class AskForInput {
 		return StandardUIInput.promptForMenuSelection(options, false);
 		//hyphen after char when asking for input
 	}
-	public static String enumInput(String prompt) throws IOException {
-		return StandardUIInput.promptForInput(prompt, false);
+	public static String enumInput() throws IOException {
+		String userInput = StandardUIInput.promptForInput("What piece would you like to be? Thimble, Wheelbarrow, Shoe, Canine, Automobile, Iron, Navalship, or Tophat" , false);
+		return userInput;
 		
 	}
 	public static boolean boolInput (String prompt, String trueString, String falseString) throws IOException {

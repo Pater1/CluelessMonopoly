@@ -21,4 +21,5 @@ public class Game {
 			System.exit(0);
 		}
 	}
+	//need to make a method to ask for how many players there are
 }
