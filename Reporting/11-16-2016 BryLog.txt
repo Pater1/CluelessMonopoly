@@ -1,0 +1,39 @@
+Tasks Done:
+	TODONE give player money is done
+	TODONE take player's money is done
+	TODONE get current money is done
+	...
+	
+Tasks To Do:
+	TODO 1. Community chance cards and chance cards
+		Prerequisites: need to be able to get player
+	TODO 2. 
+		Prerequisites: 
+	TODO 3.
+		Prerequisites:
+	...
+
+Code Needed To Proceed:
+	Note: List all Prerequisites listed under Tasks To Do header without repetition
+	PREREC 1:GetPlayer
+		Damien
+		ASAP
+	PREREC 2:
+		Developer assigned to deliver.
+		Deadline for this Deliverable.
+	PREREC 3:
+		Developer assigned to deliver.
+		Deadline for this Deliverable.
+	...
+		
+X Unasigned delivable required.
+	Note: replace X with count of deliverables in Code Needed To Proceed header that do not have a developer assigned. 
+	
+	Recommend assigning /Prerequisite/ to /Developer/.
+	... for each unassigned Prerec
+	
+X Undated deliverables found.
+	Note: replace X with count of deliverables in Code Needed To Proceed header that do not have an assigned deadline. 
+	
+	Recommend deadline for /Prerequisite/ to be /Date/.
+	... for each undated Prerec

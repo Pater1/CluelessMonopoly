@@ -47,7 +47,12 @@ public class Money {
 	}
 
 	public int getCurrentMoney() {
-		money = (fiveHundred * 500) + (oneHundred * 100) + (fifty * 50) + (twenty * 20) + (ten * 10) + (five * 5)
+		money = (fiveHundred * 500) 
+				+ (oneHundred * 100) 
+				+ (fifty * 50) 
+				+ (twenty * 20) 
+				+ (ten * 10) 
+				+ (five * 5)
 				+ (one * 1);
 		return money;
 	}
