@@ -1,6 +1,7 @@
 package CSC110.monopoly.Driver;
 
 import java.io.IOException;
+import java.util.Random;
 
 
 public class Game {
@@ -21,5 +22,10 @@ public class Game {
 			System.exit(0);
 		}
 	}
-	//need to make a method to ask for how many players there are
+	public static int diceRoll () {
+		Random randomGenerator = new Random();
+		 int randomInt = randomGenerator.nextInt(10);
+		return randomInt;
+		
+	}
 }
