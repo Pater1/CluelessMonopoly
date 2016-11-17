@@ -1,30 +1,26 @@
 package CSC110.monopoly.player;
 
-import java.io.IOException;
+import CSC110.monopoly.money.Money;
 
 public class Piece implements Player{
 
+	Money moneyUse = new Money();
+	
 	//PieceName pieceName;
 	
 	@Override
 	public void GivePlayerMoney(int amountGiven) {
-		// TODO Auto-generated method stub
+		moneyUse.givePlayerMoney(amountGiven);
 		
 	}
 
 	@Override
 	public void TakePlayerMoney(int amountTaken) {
-		// TODO Auto-generated method stub
+		moneyUse.takePayerMoney(amountTaken);
 		
 	}
 	@Override
 	public String Identifier(String playerPiece) {
-		return playerPiece;
-	}
-	
-	public static Piece choosePlayerPiece(String pieceName) throws IOException{
-		Piece playerPiece = new Piece();
-		
 		return playerPiece;
 	}
 }
