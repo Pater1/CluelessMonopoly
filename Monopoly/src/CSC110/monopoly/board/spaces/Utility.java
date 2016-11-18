@@ -1,5 +1,6 @@
 package CSC110.monopoly.board.spaces;
 
+import CSC110.monopoly.Driver.Game;
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.PurchasableSpace;
 import CSC110.monopoly.board.RenderAssistant;
@@ -9,9 +10,7 @@ public class Utility extends PurchasableSpace{
  	private int oneMult, twoMult;
 
  	protected int getRent(){
- 		boolean ownsOtherUtil = board.IsOtherUtilOwned(this);
- 		int dieRoll = 0; //replace with DieRoll method
- 		return dieRoll * (ownsOtherUtil ? oneMult : twoMult);
+ 		return Game.diceRoll() * (board.IsOtherUtilOwned(this) ? oneMult : twoMult);
  	}
 
 	public static Utility _NewUtility(String name, int purchasePrice, int oneOwnedMultiplyer, int twoOwnedMultiplyer){

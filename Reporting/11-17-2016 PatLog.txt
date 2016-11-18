@@ -1,13 +1,10 @@
 Tasks Done:
-	All Tiles except Draw a Card, Utility and Jail done.
+	All Tiles except Draw a Card and Jail done.
 	
 Tasks To Do:
 	Draw a Card's name.
 		Prerequisites: 
 		Need a method in Deck that returns the name of the deck.
-	Utility Rent.
-		Prerequisites: 
-		Need a Die Roll method somewhere..
 	Jail.
 		Prerequisites:
 		N/A
@@ -19,9 +16,6 @@ Code Needed To Proceed:
 	A method in Deck that returns the name of the deck:
 		Bryson
 		TBD
-	A Die Roll method:
-		Jake
-		TBD
 	A pass-through to get the player's current $:
 		Damien
 		ASAP
@@ -30,5 +24,4 @@ Code Needed To Proceed:
 	
 2 Undated deliverables found.
 	Recommend deadline for "A method in Deck that returns the name of the deck" to be 11/21/2016.
-	Recommend deadline for "A Die Roll method" to be 11/21/2016.
 	Recommend deadline for "A pass-through to get the player's current $" to be 11/18/2016.
