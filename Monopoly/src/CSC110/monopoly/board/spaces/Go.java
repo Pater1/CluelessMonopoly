@@ -1,25 +1,27 @@
 package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
+import CSC110.monopoly.board.GameBoard;
 import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.player.Player;
 
-public class Go implements BoardSpace {
+public class Go extends BoardSpace {
 	private int cashGo = 20;
 	
-	public static Go _NewGo(int passCash){
+	public static Go _NewGo(int passCash, GameBoard brd){
 		Go g = new Go();
 		g.cashGo = passCash;
+		g.name = "Go";
+		g.board = brd;
 		return g;
 	}
 
-	//landing on and passing Go do the same thing
 	public void LandOnSpace(Player whoLanded) {
-		// TODO Give player $
+		return;
 	}
 
 	public void PassSpace(Player whoPassed) {
-		// TODO Give player $
+		whoPassed.GivePlayerMoney(cashGo);
 	}
 
 	@Override
@@ -32,6 +34,10 @@ public class Go implements BoardSpace {
 				"",
 				RenderAssistant.FitPlayerName(plas)
 			});
+	}
+
+	public String GetName() {
+		return name;
 	}
 
 }

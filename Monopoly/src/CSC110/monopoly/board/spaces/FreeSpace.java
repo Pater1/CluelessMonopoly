@@ -4,9 +4,7 @@ import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.player.Player;
 
-public class FreeSpace implements BoardSpace{
-	private String spaceName;
-
+public class FreeSpace extends BoardSpace{
 	public void LandOnSpace(Player whoLanded) {
 		return;
 	}
@@ -17,23 +15,11 @@ public class FreeSpace implements BoardSpace{
 	
 	public static FreeSpace _NewFreeSpace(String name){
 		FreeSpace fs = new FreeSpace();
-		fs.spaceName = name;
+		fs.name = name;
 		return fs;
 	}
 
-	@Override
 	public String[] Render(Player[] plas) {
-		// TODO Auto-generated method stub
-		/*
-		 ***********************
-		 *North Carolina Avenue*
-		 *     Rent: $2000     *
-		 *    Upgrade: $150    *
-		 *  Buy/Mortgage: $200 *
-		 *   1,2,3,4,5,6,7,8   *
-		 *   Owner: Thimble    *
-		 ***********************
-		 */
 		return RenderAssistant.SpliceTile(new String[]{
 				"FREE PARKING",
 				"",

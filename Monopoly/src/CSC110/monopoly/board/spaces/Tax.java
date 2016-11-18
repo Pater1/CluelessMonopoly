@@ -1,17 +1,19 @@
 package CSC110.monopoly.board.spaces;
 
 import CSC110.monopoly.board.BoardSpace;
+import CSC110.monopoly.board.GameBoard;
 import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.player.Player;
 
-public class Tax implements BoardSpace {
+public class Tax extends BoardSpace {
 	private String taxName;
 	private int taxAmount;
 	
-	public static Tax _NewTax(String name, int amountToTax){
+	public static Tax _NewTax(String name, int amountToTax, GameBoard brd){
 		Tax tx = new Tax();
 		tx.taxName = name;
 		tx.taxAmount = amountToTax;
+		tx.board = brd;
 		return tx;
 	}
 
@@ -31,5 +33,9 @@ public class Tax implements BoardSpace {
 				"",
 				RenderAssistant.FitPlayerName(plas)
 		});
+	}
+
+	public String GetName() {
+		return taxName;
 	}
 }

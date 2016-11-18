@@ -1,10 +1,18 @@
 package CSC110.monopoly.board;
 
+import java.io.IOException;
+
 import CSC110.monopoly.player.Player;
 
-public interface BoardSpace {
-	public void LandOnSpace(Player whoLanded);
-	public void PassSpace(Player whoPassed);
+public abstract class BoardSpace{
+	protected GameBoard board;
+	protected String name;
 	
-	public String[] Render(Player[] plas);
+	public abstract void LandOnSpace(Player whoLanded) throws IOException;
+	public abstract void PassSpace(Player whoPassed);
+	
+	public abstract String[] Render(Player[] plas);
+	public String GetName(){
+		return name;
+	}
 }

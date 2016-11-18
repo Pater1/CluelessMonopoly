@@ -1,12 +1,16 @@
 package CSC110.monopoly.board.spaces;
 
+import java.io.IOException;
+
+import CSC110.monopoly.Driver.AskForInput;
 import CSC110.monopoly.board.BoardSpace;
+import CSC110.monopoly.board.GameBoard;
 import CSC110.monopoly.board.PurchasableSpace;
 import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.board.spaces.modifiers.*;
 import CSC110.monopoly.player.Player;
 
-public class Property implements PurchasableSpace {
+public class Property extends PurchasableSpace {
 	public enum PropertyGroup{
 		Brown,
 		LightBlue,
@@ -19,65 +23,68 @@ public class Property implements PurchasableSpace {
 		Utility
 	}
 	private PropertyGroup group;
-	private String propertyName;
-	private int purchasePrice, rentCost;
+	private int rentCost;
  	private Construction[] developments;
- 	private Player whoOwns;
  	
- 	private int getRent(){
+ 	protected int getRent(){
  		int ret = rentCost;
  		for(int i = 0; i < developments.length; i++){
- 			if(developments[i].IsPurchased()) ret = developments[i].GetRent();
+ 			if(developments[i].IsPurchased()){
+ 				ret = developments[i].GetRent();
+ 			}else{
+ 				break;
+ 			}
  		}
  		return ret;
  	}
-	
-	public void LandOnSpace(Player whoLanded){
-		if(whoOwns == null){
-			//TODO: UI to buy property
-		}else if(whoLanded != whoOwns){
-			whoLanded.TakePlayerMoney(getRent());
-			whoOwns.GivePlayerMoney(getRent());
-		}
-	}
-	public void PassSpace(Player whoPassed){
-		return;
-	}
-
-	public void Purchase(Player whoPurchase) {
-		// TODO Auto-generated method stub
-	}
-
-	public void Sell(Player whoPurchase) {
-		// TODO Auto-generated method stub
-	}
-
-	public void Mortgage(Player whoPurchase) {
-		// TODO Auto-generated method stub
-	}
 
 	public void Upgrade(Player whoPurchase) {
-		// TODO Auto-generated method stub
+		Construction curCon = null;
+		for(int i = 0; i < developments.length; i++){
+			if(!developments[i].IsPurchased()) curCon = developments[i];
+		}
+		
+		boolean bought = false;
+		if(curCon == null){
+			//no more developments to make
+		}else{
+			bought = curCon.Purchase(whoPurchase);
+		}
+		
+		if(bought && curCon instanceof Hotel){
+			for(int i = 0; i >= developments.length; i++){
+				if(developments[i] instanceof House) developments[i].Demolish();
+			}
+		}
 	}
-
 	public void DownGrade(Player whoPurchase) {
-		// TODO Auto-generated method stub
+		Construction curCon = null;
+		for(int i = developments.length-1; i >= 0; i++){
+			if(developments[i].IsPurchased()) curCon = developments[i];
+		}
+		
+		if(curCon == null){
+			//no more developments to sell
+		}else{
+			curCon.Sell(whoPurchase);
+		}
 	}
 
-	public static Property _MakeNewProperty(String name, PropertyGroup propGroup, int price, int rent, Construction[] possibleDevelopments){
+	public static Property _MakeNewProperty(String name, PropertyGroup propGroup, int price, int rent, Construction[] possibleDevelopments, GameBoard brd){
 		Property prop = new Property();
-		prop.propertyName = name;
+		prop.name = name;
 		prop.purchasePrice = price;
 		prop.rentCost = rent;
 		prop.developments = possibleDevelopments;
 		prop.group = propGroup;
 		prop.whoOwns = null;
+		prop.board = brd;
 		return prop;
 	}
 
 	public String[] Render(Player[] plas) {
 		return RenderAssistant.SpliceTile(new String[]{
-				propertyName,
+				name,
 				group.name(),
 				"Rent: " + rentCost,
 				(whoOwns == null) ? "Purchase: " + purchasePrice : "Mortgage: " + (purchasePrice),
