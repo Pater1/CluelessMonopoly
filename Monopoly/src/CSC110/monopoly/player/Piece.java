@@ -35,7 +35,11 @@ public class Piece implements Player{
 		return rawInput;
 	}
 	
-	private void comparePlayers(){
+	public int howMuchMonetaryOwned(){
+		return moneyUse.getCurrentMoney();
+	}
+	
+	public void wherePlayerIs(){
 		
 	}
 }
