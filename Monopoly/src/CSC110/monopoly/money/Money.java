@@ -60,7 +60,6 @@ public class Money {
 	public int givePlayerMoney(int userMoney) {
 		addChangeToBills(userMoney);
 		money = getCurrentMoney();
-
 		return money;
 	}
 
@@ -82,11 +81,66 @@ public class Money {
 			bill5,
 			bill1}));
 	}
-
 	public int takePayerMoney(int userMoney) {
-		subChangeToBills(userMoney);
+		checkBills(userMoney);
+
 		money = getCurrentMoney();
 		return userMoney;
+	}
+	public void checkBills(int sub){
+		while(sub >= 500 & fiveHundred > 0){
+			sub -= 500;
+			fiveHundred--;
+		}
+		while(sub >= 100 & oneHundred > 0){
+			sub -= 100;
+			oneHundred--;
+			if(oneHundred <= 0 & fiveHundred > 0){
+				oneHundred += 5;
+				fiveHundred -= 1;
+			}
+		}
+		while(sub >= 50 & fifty > 0){
+			sub -= 50;
+			fifty--;
+			if(fifty <= 0 & oneHundred > 0 ){
+				fifty += 2;
+				oneHundred -= 0;
+			}
+		}
+		while(sub >= 20 & twenty > 0){
+			sub -= 20;
+			twenty--;
+			if(twenty <= 0 & fifty > 0){
+				twenty += 2;
+				ten += 1;
+				fifty -= 1;
+			}
+		}
+		while(sub >= 10 & ten > 0){
+			sub -= 10;
+			ten--;
+			if (ten <= 0 & twenty > 0){
+				ten += 2;
+				twenty -= 1;
+			}
+		}
+		while(sub >= 5 & five > 0){
+			sub -= 5;
+			five--;
+			if (five <= 0 & ten > 0){
+				five += 2;
+				ten -= 1;
+			}
+		}
+		while(sub >= 1 & one > 0){
+			sub -= 1;
+			one--;
+			if (one <= 0 & five > 0){
+				one += 5;
+				five -=1;
+			}
+		}
 	}
 
 }

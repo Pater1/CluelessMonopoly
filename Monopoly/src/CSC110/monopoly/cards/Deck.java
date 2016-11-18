@@ -35,7 +35,9 @@ public class Deck {
 		//TODO: return a Deck that holds the community chest cards
 		Deck CCDeck = new Deck();
 		//CCDeck.
-		Card[] CCCards = new Card[15];
+		Card[] CCCards = new Card[]{
+				
+		}
 
 		return CCDeck;
 	}
