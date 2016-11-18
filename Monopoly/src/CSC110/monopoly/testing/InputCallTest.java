@@ -8,12 +8,22 @@ import CSC110.monopoly.Driver.AskForInput;;
 public class InputCallTest {
 	public static void  main(String [] args) throws IOException {
 	//testInput();
-		testGameReplay();
+		//testGameReplay();
+		//testPlayerNum();
+		testDiceRoll();
 }
 	/*public static void testInput() throws IOException {
 		AskForInput.Input(new String[] {"h","hey", "hello","h","hey" });
 	}*/
-	public static void testGameReplay () throws IOException {
+	/*public static void testGameReplay () throws IOException {
 		Game.replayOrNot();
+	}*/
+	/*public static void testPlayerNum () throws IOException {
+		System.out.println(AskForInput.numOfPlayers());
+	}*/
+	public static void testDiceRoll () {
+		for (int i = 0;i<15;i++){
+		System.out.println(Game.diceRoll());
+		}
 	}
 }

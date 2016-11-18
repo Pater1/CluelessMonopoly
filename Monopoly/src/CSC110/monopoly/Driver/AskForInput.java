@@ -31,11 +31,11 @@ public class AskForInput {
 	public static String enumInput() throws IOException {
 		String userInput = StandardUIInput.promptForInput("What piece would you like to be? Thimble, Wheelbarrow, Shoe, Canine, Automobile, Iron, Navalship, or Tophat" , false);
 		return userInput;
-		
 	}
 	public static boolean boolInput (String prompt, String trueString, String falseString) throws IOException {
 		return StandardUIInput.promptForBool(prompt, trueString, falseString);
-		
-		
+	}
+	public static int numOfPlayers () throws IOException {
+		return StandardUIInput.promptForInt("How many players are there?",1,8);
 	}
 }
