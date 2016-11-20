@@ -1,5 +1,5 @@
 package CSC110.monopoly.cards.chance;
 
-public class AdvanceToStCharlesC {
+public class MovePlayerCard {
 
 }
