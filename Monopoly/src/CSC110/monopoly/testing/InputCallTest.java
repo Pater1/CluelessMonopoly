@@ -3,7 +3,9 @@ package CSC110.monopoly.testing;
 import java.io.IOException;
 import CSC110.monopoly.Driver.Driver;
 import CSC110.monopoly.Driver.Game;
+import CSC110.monopoly.Driver.PlayerTurn;
 import CSC110.monopoly.Driver.AskForInput;
+import CSC110.monopoly.Driver.CreatePlayers;
 import CSC110.monopoly.Driver.DiceRoller;;
 
 public class InputCallTest {
@@ -12,7 +14,10 @@ public class InputCallTest {
 		// testGameReplay();
 		// testPlayerNum();
 		//testDiceRoll();
-		AskForInput.enumInput();
+		//AskForInput.enumInput();
+		//System.out.println(CreatePlayers.createPlayers().get(2));
+		//System.out.println(CreatePlayers.createPlayers().get(3));
+		//PlayerTurn.playerLoop();
 	}
 
 	/*
