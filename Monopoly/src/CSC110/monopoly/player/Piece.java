@@ -9,6 +9,7 @@ public class Piece implements Player{
 
 	Money moneyUse = new Money();
 	String rawInput;
+	int locationalInt;
 	
 	public void GivePlayerMoney(int amountGiven) {
 		moneyUse.givePlayerMoney(amountGiven);
@@ -21,25 +22,24 @@ public class Piece implements Player{
 	}
 	
 	public String playerInit() throws IOException {
-		boolean isValidInput = false;
-		while(isValidInput){
-			for(int i=0;i<AskForInput.numOfPlayers();i++){
-				rawInput = AskForInput.enumInput();
-				if(rawInput.equals("")){
-				}else if(rawInput.equals("")){
-				}else{
-					
-				}
-			}
-		}
-		return rawInput;
+		return AskForInput.enumInput();					
+	}
+	
+	public void getPlayerName(){
+		
 	}
 	
 	public int howMuchMonetaryOwned(){
 		return moneyUse.getCurrentMoney();
 	}
 	
-	public void wherePlayerIs(){
+	public int getCurrentPlayerLocation(){
+		locationalInt = 0;
 		
+		return locationalInt;
+	}
+	
+	public int setPlayerLocation(){
+		return locationalInt;
 	}
 }
