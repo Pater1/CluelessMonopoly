@@ -12,5 +12,3 @@ public enum PieceName{
 	NavalShip
 
 }
-
-//This is a completely useless comment just for the main purpose of fixing an annoying bug...
