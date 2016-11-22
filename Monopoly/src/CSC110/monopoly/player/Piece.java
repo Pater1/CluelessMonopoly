@@ -23,7 +23,7 @@ public class Piece implements Player{
 	}
 
 	public void TakePlayerMoney(int amountTaken) {
-		moneyUse.takePayerMoney(amountTaken);
+		moneyUse.takePlayerMoney(amountTaken);
 		
 	}
 	

@@ -7,7 +7,7 @@ public class MoneyTesting {
 		// TODO Auto-generated method stub
 		Money userMoney = new Money();
 		System.out.println(userMoney.getCurrentMoney());
-		userMoney.takePayerMoney(401);
+		userMoney.takePlayerMoney(401);
 		System.out.println(userMoney.getCurrentMoney());
 		userMoney.givePlayerMoney(4455);
 		System.out.println(userMoney.getCurrentMoney());
