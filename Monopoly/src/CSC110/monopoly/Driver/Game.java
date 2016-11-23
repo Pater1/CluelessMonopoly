@@ -8,6 +8,7 @@ public class Game {
 
 	public static void Start() throws IOException {
 		System.out.println("Welcome to Monopoly!");
+
 		CreatePlayers.createPlayers();
 		PlayerTurn.playerLoop();
 	}

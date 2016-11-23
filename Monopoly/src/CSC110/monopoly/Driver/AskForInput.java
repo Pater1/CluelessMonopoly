@@ -1,6 +1,7 @@
 package CSC110.monopoly.Driver;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import CSC110.monopoly.player.PieceName;
 import CSC110.patpackages.imported.StandardUIInput;
@@ -30,23 +31,32 @@ public class AskForInput {
 		// hyphen after char when asking for input
 	}
 
-	public static String enumInput() throws IOException {
+	public static PieceName enumInput() throws IOException {
 		PieceName allPieces[] = PieceName.values();
-		 for (PieceName aPiece : allPieces) {
-		      System.out.println(aPiece);
-		    }
-		String userInput = StandardUIInput.promptForInput(
-				"What piece would you like to be?",
-				false);
-		
-		if (userInput.equals("Thimble") || userInput.equals("Wheelbarrow") || userInput.equals("Shoe") || userInput.equals("Canine") || userInput.equals("Automobile") || userInput.equals("Iron") || userInput.equals("Navalship") || userInput.equals("Tophat")){
-			return userInput;
+		ArrayList<String> piecesTaken = new ArrayList<String>();
+		for (PieceName aPiece : allPieces) {
+			System.out.println(aPiece);
 		}
-		else {
-			System.out.println("Oops, please enter a valid peice.");
-			enumInput();
+		String userInput = StandardUIInput.promptForInput("What piece would you like to be?", false);
+		piecesTaken.add(userInput);
+		for (int i = 0; i < piecesTaken.size(); i++){
+			if (userInput.equals(piecesTaken.get(i))) {
+			}
+			else {
+				System.out.println("That piece has been already ");
+				return enumInput();
+			}
+			piecesTaken.add(userInput);
 		}
-		return userInput;
+		for (int i = 0; i < 8; i++) {
+			if (userInput.equals(allPieces[i])){
+			}
+			else {
+				System.out.println("Oops, please enter a valid piece.");
+				return enumInput();
+				}
+		}
+		return allPieces[1];
 		
 	}
 
