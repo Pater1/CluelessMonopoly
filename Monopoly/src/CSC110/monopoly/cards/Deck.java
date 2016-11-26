@@ -2,6 +2,7 @@ package CSC110.monopoly.cards;
 
 import java.util.Random;
 
+import CSC110.monopoly.cards.chance.GiveMoneyCard;
 import CSC110.monopoly.cards.comchest.AdvanceToGoCC;
 
 public class Deck {
@@ -33,11 +34,15 @@ public class Deck {
 	
 	public static Deck CommunityChestDeck(){
 		//TODO: return a Deck that holds the community chest cards
+		
 		Deck CCDeck = new Deck();
-		//CCDeck.
-		Card[] CCCards = new Card[]{
+		Card[] CCCards = new Card[]{GiveMoneyCard.giveMoney(), 
 				
-		}
+		
+		
+		
+		
+		};
 
 		return CCDeck;
 	}

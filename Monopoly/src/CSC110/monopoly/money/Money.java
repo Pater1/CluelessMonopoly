@@ -81,7 +81,7 @@ public class Money {
 			bill5,
 			bill1}));
 	}
-	public int takePayerMoney(int userMoney) {
+	public int takePlayerMoney(int userMoney) {
 		checkBills(userMoney);
 
 		money = getCurrentMoney();

@@ -18,6 +18,7 @@ public class InputCallTest {
 		//System.out.println(CreatePlayers.createPlayers().get(2));
 		//System.out.println(CreatePlayers.createPlayers().get(3));
 		//PlayerTurn.playerLoop();
+		AskForInput.enumInput();
 	}
 
 	/*

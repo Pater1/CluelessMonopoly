@@ -1,14 +1,20 @@
 package CSC110.monopoly.player;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import CSC110.monopoly.Driver.AskForInput;
+import CSC110.monopoly.cards.Card;
 import CSC110.monopoly.money.Money;
 
 public class Piece implements Player{
 
 	Money moneyUse = new Money();
 	String rawInput;
+	int locationalInt = 0;
+	@SuppressWarnings("unused")
+	private PieceName piece;
+	private String playerName;
+	ArrayList<Card> playerCards = new ArrayList<Card>();
 	
 	public void GivePlayerMoney(int amountGiven) {
 		moneyUse.givePlayerMoney(amountGiven);
@@ -16,30 +22,36 @@ public class Piece implements Player{
 	}
 
 	public void TakePlayerMoney(int amountTaken) {
-		moneyUse.takePayerMoney(amountTaken);
+		moneyUse.takePlayerMoney(amountTaken);
 		
 	}
 	
-	public String playerInit() throws IOException {
-		boolean isValidInput = false;
-		while(isValidInput){
-			for(int i=0;i<AskForInput.numOfPlayers();i++){
-				rawInput = AskForInput.enumInput();
-				if(rawInput.equals("")){
-				}else if(rawInput.equals("")){
-				}else{
-					
-				}
-			}
-		}
-		return rawInput;
+	public static Piece playerInit(PieceName pieceInput) throws IOException {
+		Piece newPiece = new Piece();
+		newPiece.piece = pieceInput;
+		return newPiece;
 	}
 	
-	public int howMuchMonetaryOwned(){
+	
+	public String getPlayerName(PieceName pieceInput){
+		playerName = pieceInput.name();		
+		return playerName;
+	}
+	
+	public int howMuchMoneyOwned(){
 		return moneyUse.getCurrentMoney();
 	}
 	
-	public void wherePlayerIs(){
-		
+	public int getCurrentPlayerLocation(int locationalInt){		
+		return locationalInt;
+	}
+	
+	public int setPlayerLocation(int location){
+		location = locationalInt;
+		return locationalInt;
+	}
+	
+	public void storePlayerCard(Card card){
+		playerCards.add(card);
 	}
 }
