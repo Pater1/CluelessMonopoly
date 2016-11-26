@@ -42,7 +42,7 @@ public class Piece implements Player{
 		return moneyUse.getCurrentMoney();
 	}
 	
-	public int getCurrentPlayerLocation(int locationalInt){		
+	public int getCurrentPlayerLocation(){		
 		return locationalInt;
 	}
 	

@@ -12,7 +12,7 @@ public interface Player {
 	
 	public int howMuchMoneyOwned();
 	
-	public int getCurrentPlayerLocation(int locationalInt);
+	public int getCurrentPlayerLocation();
 	
 	public int setPlayerLocation(int location);
 	
