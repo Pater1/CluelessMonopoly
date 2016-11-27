@@ -19,7 +19,17 @@ import CSC110.monopoly.player.Player;
 
 public class GameBoard {
 	public BoardSpace[] board = _NewBoard(this);
-	
+
+	public ArrayList<PurchasableSpace> ProertiesOwnedBy(Player player) {
+		ArrayList<PurchasableSpace> aps = new ArrayList<PurchasableSpace>();
+		for(int i = 0; i < board.length; i++){
+			if(board[i] instanceof PurchasableSpace){
+				PurchasableSpace other = (PurchasableSpace)board[i];
+				if(other.DoesOwn(player)) aps.add(other);
+			}
+		}
+		return aps;
+	}
 	public boolean IsOtherUtilOwned(Utility utility) {
 		for(int i = 0; i < board.length; i++){
 			if(board[i] instanceof Utility && !board[i].GetName().equals(utility.GetName())){

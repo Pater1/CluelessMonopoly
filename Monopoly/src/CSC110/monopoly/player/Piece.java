@@ -3,7 +3,6 @@ package CSC110.monopoly.player;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import CSC110.monopoly.Driver.AskForInput;
 import CSC110.monopoly.cards.Card;
 import CSC110.monopoly.money.Money;
 
@@ -33,16 +32,9 @@ public class Piece implements Player{
 		return newPiece;
 	}
 	
-	//I am aware this isn't correct; I do however have the enum converted to a string.
-	public String getPlayerName() throws IOException{
-		PieceName.Thimble.name();
-		PieceName.Wheelbarrow.name();
-		PieceName.Shoe.name();
-		PieceName.Canine.name();
-		PieceName.Automobile.name();
-		PieceName.Iron.name();
-		PieceName.TopHat.name();
-		PieceName.NavalShip.name();
+	
+	public String getPlayerName(PieceName pieceInput){
+		playerName = pieceInput.name();		
 		return playerName;
 	}
 	
@@ -50,7 +42,7 @@ public class Piece implements Player{
 		return moneyUse.getCurrentMoney();
 	}
 	
-	public int getCurrentPlayerLocation(int locationalInt){		
+	public int getCurrentPlayerLocation(){		
 		return locationalInt;
 	}
 	
@@ -59,7 +51,7 @@ public class Piece implements Player{
 		return locationalInt;
 	}
 	
-	public void storePlayerCards(Card card){
+	public void storePlayerCard(Card card){
 		playerCards.add(card);
 	}
 }

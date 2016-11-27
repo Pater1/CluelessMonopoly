@@ -42,4 +42,8 @@ public abstract class PurchasableSpace extends BoardSpace{
 	public void PassSpace(Player whoPassed) {
 		return;
 	}
+	
+	public boolean DoesOwn(Player thisPerson){
+		return (thisPerson == whoOwns);
+	}
 }
