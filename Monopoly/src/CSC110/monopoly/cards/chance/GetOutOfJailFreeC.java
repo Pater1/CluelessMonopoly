@@ -1,5 +1,8 @@
 package CSC110.monopoly.cards.chance;
 
+import java.io.IOException;
+
+import CSC110.monopoly.Game.Game;
 import CSC110.monopoly.board.GameBoard;
 import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.board.spaces.Jail;
@@ -22,9 +25,12 @@ public class GetOutOfJailFreeC extends Card {
 		board = brd;
 	}
 
-	public void playCard(Player owner) {
+	public void playCard(Player owner) throws IOException {
 		owner.storePlayerCard(this);
 		thisDeck.RemoveCard(this);
+		
+		System.out.println("You drew: \n" + RenderAssistant.RenderArray(Render()));
+		Game._Stall();
 	}
 	
 	public void JailBreak(Player owner){

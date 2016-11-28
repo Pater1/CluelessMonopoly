@@ -3,6 +3,7 @@ package CSC110.monopoly.cards.chance;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import CSC110.monopoly.Game.Game;
 import CSC110.monopoly.board.GameBoard;
 import CSC110.monopoly.board.PurchasableSpace;
 import CSC110.monopoly.board.RenderAssistant;
@@ -33,6 +34,9 @@ public class PropertyRenovations extends Card{
 		}
 		
 		owner.TakePlayerMoney(costTotal);
+		
+		System.out.println("You drew: \n" + RenderAssistant.RenderArray(Render()));
+		Game._Stall();
 	}
 
 	public String[] Render() {

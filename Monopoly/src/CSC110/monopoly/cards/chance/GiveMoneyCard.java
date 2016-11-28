@@ -1,5 +1,8 @@
 package CSC110.monopoly.cards.chance;
 
+import java.io.IOException;
+
+import CSC110.monopoly.Game.Game;
 import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.cards.Card;
 import CSC110.monopoly.player.Player;
@@ -15,12 +18,15 @@ public class GiveMoneyCard extends Card {
 		
 	}
 
-	public void playCard(Player owner) {
+	public void playCard(Player owner) throws IOException {
 		if(addMoney > 0){
 			owner.GivePlayerMoney(addMoney);
 		}else{
 			owner.TakePlayerMoney(-addMoney);
 		}
+
+		System.out.println("You drew: \n" + RenderAssistant.RenderArray(Render()));
+		Game._Stall();
 	}
 	
 	public String[] Render() {

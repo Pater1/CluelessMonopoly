@@ -5,6 +5,7 @@ import CSC110.monopoly.player.Player;
 
 import java.io.IOException;
 
+import CSC110.monopoly.Game.Game;
 import CSC110.monopoly.board.GameBoard;
 import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.board.spaces.RailRoad;
@@ -80,6 +81,9 @@ public class MovePlayerCard extends Card{
 		}else{
 			board.board[locationToMoveTo].LandOnSpace(owner);
 		}
+		
+		System.out.println("You drew: \n" + RenderAssistant.RenderArray(Render()));
+		Game._Stall();
 	}
 	
 	private int NearestUtil(Player owner){
