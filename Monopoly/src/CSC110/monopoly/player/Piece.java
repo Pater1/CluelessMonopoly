@@ -93,6 +93,8 @@ public class Piece implements Player{
 	}
 
 	private void PayDebt() throws IOException {
+		if(debt <= 0) return;
+		
 		int interest = (int) (debt * .1);
 		int payment = StandardUIInput.promptForInt("How much would you like to pay down your debt? (minimum: $" +interest + ")",interest,moneyUse.getCurrentMoney());
 		
