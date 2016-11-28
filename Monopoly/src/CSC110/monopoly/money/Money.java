@@ -3,7 +3,6 @@ package CSC110.monopoly.money;
 import CSC110.monopoly.board.RenderAssistant;
 
 public class Money {
-	int money = 0;
 	int fiveHundred = 2;
 	int oneHundred = 2;
 	int fifty = 2;
@@ -11,6 +10,18 @@ public class Money {
 	int ten = 5;
 	int five = 5;
 	int one = 5;
+	
+	public static Money _NewMoney(){
+		Money mny = new Money();
+		mny.fiveHundred = 2;
+		mny.oneHundred = 2;
+		mny.fifty = 2;
+		mny.twenty = 6;
+		mny.ten = 5;
+		mny.five = 5;
+		mny.one = 5;
+		return mny;
+	}
 
 	public void addChangeToBills(int money) {
 		int change = (int) (Math.ceil(money * 1));
@@ -47,7 +58,7 @@ public class Money {
 	}
 
 	public int getCurrentMoney() {
-		money = (fiveHundred * 500) 
+		int money = (fiveHundred * 500) 
 				+ (oneHundred * 100) 
 				+ (fifty * 50) 
 				+ (twenty * 20) 
@@ -57,10 +68,8 @@ public class Money {
 		return money;
 	}
 
-	public int givePlayerMoney(int userMoney) {
+	public void givePlayerMoney(int userMoney) {
 		addChangeToBills(userMoney);
-		money = getCurrentMoney();
-		return money;
 	}
 
 	public String displayMoney() {
@@ -81,11 +90,8 @@ public class Money {
 			bill5,
 			bill1}));
 	}
-	public int takePlayerMoney(int userMoney) {
+	public void takePlayerMoney(int userMoney) {
 		checkBills(userMoney);
-
-		money = getCurrentMoney();
-		return userMoney;
 	}
 	public void checkBills(int sub){
 		while(sub >= 500 & fiveHundred > 0){

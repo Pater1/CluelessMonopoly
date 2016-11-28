@@ -1,25 +1,11 @@
 package CSC110.monopoly.testing;
 
 import java.io.IOException;
-import CSC110.monopoly.Driver.Driver;
-import CSC110.monopoly.Driver.Game;
-import CSC110.monopoly.Driver.PlayerTurn;
-import CSC110.monopoly.Driver.AskForInput;
-import CSC110.monopoly.Driver.CreatePlayers;
-import CSC110.monopoly.Driver.DiceRoller;;
+
+import CSC110.monopoly.Game.Game;
+import CSC110.monopoly.Input.AskForInput;
 
 public class InputCallTest {
-	public static void main(String[] args) throws IOException {
-		// testInput();
-		// testGameReplay();
-		// testPlayerNum();
-		//testDiceRoll();
-		//AskForInput.enumInput();
-		//System.out.println(CreatePlayers.createPlayers().get(2));
-		//System.out.println(CreatePlayers.createPlayers().get(3));
-		//PlayerTurn.playerLoop();
-		AskForInput.enumInput();
-	}
 
 	/*
 	 * public static void testInput() throws IOException { AskForInput.Input(new
@@ -35,10 +21,10 @@ public class InputCallTest {
 	 */
 	public static void testDiceRoll() {
 		for (int i = 0; i < 15; i++) {
-			System.out.println(DiceRoller.diceRoll());
+			System.out.println(Game._DiceRoll());
 		}
 	}
 	public static void testPlayerPeice() throws IOException {
-		AskForInput.enumInput();
+		//AskForInput.enumInput();
 	}
 }

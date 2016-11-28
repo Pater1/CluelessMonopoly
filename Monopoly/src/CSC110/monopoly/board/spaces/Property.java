@@ -2,7 +2,7 @@ package CSC110.monopoly.board.spaces;
 
 import java.io.IOException;
 
-import CSC110.monopoly.Driver.AskForInput;
+import CSC110.monopoly.Input.AskForInput;
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.GameBoard;
 import CSC110.monopoly.board.PurchasableSpace;
@@ -28,20 +28,37 @@ public class Property extends PurchasableSpace {
  	
  	protected int getRent(){
  		int ret = rentCost;
- 		for(int i = 0; i < developments.length; i++){
+ 		for(int i = developments.length-1; i >= 0; i++){
  			if(developments[i].IsPurchased()){
  				ret = developments[i].GetRent();
+ 				break;
+ 			}
+ 		}
+ 		return ret;
+ 	}
+ 	
+ 	public int HousesCount(){
+ 		int ret = 0;
+ 		for(int i = 0; i < developments.length-1; i++){
+ 			if(developments[i].IsPurchased()){
+ 				ret++;
  			}else{
  				break;
  			}
  		}
  		return ret;
  	}
+ 	
+ 	public boolean HasHotel(){
+ 		return developments[developments.length-1].IsPurchased();
+ 	}
 
 	public void Upgrade(Player whoPurchase) {
 		Construction curCon = null;
-		for(int i = 0; i < developments.length; i++){
-			if(!developments[i].IsPurchased()) curCon = developments[i];
+		if(!HasHotel()){
+			for(int i = 0; i < developments.length; i++){
+				if(!developments[i].IsPurchased()) curCon = developments[i];
+			}
 		}
 		
 		boolean bought = false;
@@ -64,7 +81,7 @@ public class Property extends PurchasableSpace {
 		}
 		
 		if(curCon == null){
-			//no more developments to sell
+			System.out.println("Looks like you have no more developments on this property to sell...");
 		}else{
 			curCon.Sell(whoPurchase);
 		}
@@ -89,7 +106,7 @@ public class Property extends PurchasableSpace {
 				"Rent: " + rentCost,
 				(whoOwns == null) ? "Purchase: " + purchasePrice : "Mortgage: " + (purchasePrice),
 				RenderAssistant.FitPlayerName(plas),
-				"Owner: " + whoOwns
+				"Owner: " + ((whoOwns == null)? "null" : whoOwns.getPlayerName())
 		});
 	}
 }

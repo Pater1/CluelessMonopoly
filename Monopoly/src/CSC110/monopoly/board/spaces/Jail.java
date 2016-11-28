@@ -16,7 +16,7 @@ public class Jail extends BoardSpace{
 		if(!holding){
 			//TODO: set whoLanded to jailed
 			//TODO: move whoLanded to holding Jail Space
-			jailed.add(Jailed._NewJailed(whoLanded, holdingDuration));
+			jailed.add(new Jailed(whoLanded, holdingDuration));
 		}
 	}
 
@@ -43,19 +43,20 @@ public class Jail extends BoardSpace{
 		return jl;
 	}
 	
+	public void Jail(Player who){
+		jailed.add(new Jailed(who, holdingDuration));
+	}
+	
 	private static class Jailed{
 		public Player jailedPlayer;
 		public int turnsInJail;
 		
-		public static Jailed _NewJailed(Player toJail, int forTurns){
-			Jailed jl = new Jailed();
-			jl.jailedPlayer = toJail;
-			jl.turnsInJail = forTurns;
-			return jl;
+		public Jailed(Player toJail, int forTurns){
+			jailedPlayer = toJail;
+			turnsInJail = forTurns;
 		}
 	}
 
-	@Override
 	public String[] Render(Player[] plas) {
 		return RenderAssistant.SpliceTile(new String[]{
 				name,
@@ -64,7 +65,18 @@ public class Jail extends BoardSpace{
 		});
 	}
 
-	public String GetName() {
-		return name;
+	public boolean IsJailing(Player owner) {
+		for(int i = 0; i < jailed.size(); i++){
+			if(jailed.get(i).jailedPlayer == owner) return true;
+		}
+		return false;
+	}
+
+	public void Release(Player who) {
+		for(int i = jailed.size()-1; i >= 0; i++){
+			if(jailed.get(i).jailedPlayer == who){
+				jailed.remove(jailed.get(i));
+			}
+		}
 	}
 }

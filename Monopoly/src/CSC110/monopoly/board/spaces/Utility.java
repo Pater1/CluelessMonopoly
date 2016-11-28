@@ -1,6 +1,6 @@
 package CSC110.monopoly.board.spaces;
 
-import CSC110.monopoly.Driver.DiceRoller;
+import CSC110.monopoly.Game.Game;
 import CSC110.monopoly.board.PurchasableSpace;
 import CSC110.monopoly.board.RenderAssistant;
 import CSC110.monopoly.player.Player;
@@ -10,7 +10,7 @@ public class Utility extends PurchasableSpace{
  	private int oneMult, twoMult;
 
  	protected int getRent(){
- 		return DiceRoller.diceRoll() * (board.IsOtherUtilOwned(this) ? oneMult : twoMult);
+ 		return Game._DiceRoll() * (board.IsOtherUtilOwned(this) ? oneMult : twoMult);
  	}
 
 	public static Utility _NewUtility(String name, int purchasePrice, int oneOwnedMultiplyer, int twoOwnedMultiplyer){
@@ -33,7 +33,7 @@ public class Utility extends PurchasableSpace{
 				"Rent: " + thisRent(),
 				(whoOwns == null) ? "Purchase: " + purchasePrice : "Mortgage: " + (purchasePrice),
 				RenderAssistant.FitPlayerName(plas),
-				"Owner: " + whoOwns
+				"Owner: " + ((whoOwns == null)? "null" : whoOwns.getPlayerName())
 		});
 	}
 

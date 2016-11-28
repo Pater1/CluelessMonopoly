@@ -19,7 +19,7 @@ public class RenderAssistant {
 	public static String FitPlayerName(Player[] players, String fitIn){
 		String names = "", initials = "";
 		for(int i = 0; i < players.length; i++){
-			String ident = "";//players[i].Identifier();
+			String ident = players[i].getPlayerName();
 			names += ident + ",";
 			initials += ident.charAt(0) + ",";
 		}

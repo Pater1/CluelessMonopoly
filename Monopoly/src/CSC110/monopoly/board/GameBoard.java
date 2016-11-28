@@ -1,7 +1,9 @@
 package CSC110.monopoly.board;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import CSC110.monopoly.Game.Game;
 import CSC110.monopoly.board.spaces.CardDraw;
 import CSC110.monopoly.board.spaces.FreeSpace;
 import CSC110.monopoly.board.spaces.Go;
@@ -18,7 +20,64 @@ import CSC110.monopoly.cards.Deck;
 import CSC110.monopoly.player.Player;
 
 public class GameBoard {
-	public BoardSpace[] board = _NewBoard(this);
+	public Game game;
+	public BoardSpace[] board;
+
+	public int MovePlayer(Player toMove) throws IOException{
+		return MovePlayer(toMove, Game._DiceRoll());
+	}
+	public int MovePlayerTo(Player toMove, int moveTo, boolean bypassLand) throws IOException{
+		int startingFrom = toMove.getCurrentPlayerLocation();
+		int move = 0;
+		if(moveTo > startingFrom){
+			move = moveTo-startingFrom;
+		}else{
+			move = moveTo + (board.length-1-startingFrom);
+		}
+		
+		int dir = (move > 0)? 1 : -1;
+		
+		int i = startingFrom + dir;
+		while(i != moveTo - dir){
+			board[i].PassSpace(toMove);
+			if(dir > 0){
+				i = (i+1)%board.length;
+			}else{
+				i--;
+				if(i < 0) i = board.length -1;
+			}
+		}
+		
+		System.out.println("You've landed on: \n" + RenderAssistant.RenderArray(board[moveTo].Render(new Player[0])));
+		
+		if(!bypassLand) board[moveTo].LandOnSpace(toMove);
+		
+		return moveTo;
+	}
+	
+	public int MovePlayer(Player toMove, int move) throws IOException{
+		int startingFrom = toMove.getCurrentPlayerLocation();
+		int endingAt = (startingFrom + move) % board.length;
+		
+		int dir = (move > 0)? 1 : -1;
+		
+		int i = startingFrom + dir;
+		while(i != endingAt - dir){
+			board[i].PassSpace(toMove);
+			if(dir > 0){
+				i = (i+1)%board.length;
+			}else{
+				i--;
+				if(i < 0) i = board.length -1;
+			}
+		}
+		
+		System.out.println("You've landed on: \n" + RenderAssistant.RenderArray(board[endingAt].Render(new Player[0])));
+		
+		board[endingAt].LandOnSpace(toMove);
+		
+		return endingAt;
+	}
 
 	public ArrayList<PurchasableSpace> ProertiesOwnedBy(Player player) {
 		ArrayList<PurchasableSpace> aps = new ArrayList<PurchasableSpace>();
@@ -65,11 +124,31 @@ public class GameBoard {
 		return null;
 	}
 	
-	public String RenderToConsole(Player[] plas, int boardWidth){
+	private Player[] playersOnSpace(Player[] allPlayers, int index){
+		ArrayList<Player> onSpace = new ArrayList<Player>();
+		for(int i = 0; i < allPlayers.length; i++){
+			if(allPlayers[i].getCurrentPlayerLocation() == index){
+				onSpace.add(allPlayers[i]);
+			}
+		}
+		
+		Player[] ret = new Player[onSpace.size()];
+		for(int i = 0; i < ret.length; i++){
+			ret[i] = onSpace.get(i);
+		}
+		
+		return ret;
+	}
+	
+	public String RenderToConsole(){
+		return RenderToConsole(game.GetPlayers(), 11);
+	}
+	
+ 	public String RenderToConsole(Player[] plas, int boardWidth){
 		//Get Renders
 		ArrayList<String[]> brd = new ArrayList<String[]>();
 		for(int i = 0; i < board.length; i++){
-			String[] spc = board[i].Render(plas);
+			String[] spc = board[i].Render(playersOnSpace(plas, i));
 			if(spc != null && spc.length > 0){
 				brd.add(spc);
 			}
@@ -119,15 +198,16 @@ public class GameBoard {
 		return ret;
 	}
 	
-	public static GameBoard _NewGameBoard(){
+	public static GameBoard _NewGameBoard(Game gm){
 		GameBoard gmbrd = new GameBoard();
+		gmbrd.game = gm;
 		gmbrd.board = _NewBoard(gmbrd);
 		return gmbrd;
 	}
 			
-	private static final BoardSpace[] _NewBoard(GameBoard brd){
-		Deck communityChest = Deck.CommunityChestDeck(), chance = Deck.ChanceDeck();
-		return new BoardSpace[]{
+	private static BoardSpace[] _NewBoard(GameBoard brd){
+		Deck communityChest = new Deck(), chance = new Deck();
+		BoardSpace[] brdspc = new BoardSpace[]{
 				//Go --corner
 				Go._NewGo(200, brd),
 				//Mediteranian Avenue -Property-Brown
@@ -139,7 +219,7 @@ public class GameBoard {
 						Hotel._NewHotel(100,250)
 				}, brd),
 				//Community Chest
-				CardDraw._NewCardDraw(communityChest, brd),
+				CardDraw._NewCardDraw("Community Chest", communityChest, brd),
 				//Baltic Avenue -Property-Brown
 				Property._MakeNewProperty("Baltic Avenue", PropertyGroup.Brown, 60, 4, new Construction[]{
 						House._NewHouse(50,20),
@@ -161,7 +241,7 @@ public class GameBoard {
 						Hotel._NewHotel(100,550)
 				}, brd),
 				//Chance
-				CardDraw._NewCardDraw(chance, brd),
+				CardDraw._NewCardDraw("Chance", chance, brd),
 				//Vermont Avenue -Property-LightBlue
 				Property._MakeNewProperty("Vermont Avenue", PropertyGroup.LightBlue, 100, 6, new Construction[]{
 						House._NewHouse(50,30),
@@ -217,7 +297,7 @@ public class GameBoard {
 						Hotel._NewHotel(200,950)
 				}, brd),
 				//Community Chest
-				CardDraw._NewCardDraw(communityChest, brd),
+				CardDraw._NewCardDraw("Community Chest", communityChest, brd),
 				//Tennessee Avenue -Property-Orange
 				Property._MakeNewProperty("Tennessee Avenue", PropertyGroup.Orange, 180, 14, new Construction[]{
 						House._NewHouse(100,70),
@@ -245,7 +325,7 @@ public class GameBoard {
 						Hotel._NewHotel(300,1050)
 				}, brd),
 				//Chance
-				CardDraw._NewCardDraw(chance, brd),
+				CardDraw._NewCardDraw("Chance", chance, brd),
 				//Indiana Avenue -Property-Red
 				Property._MakeNewProperty("Indiana Avenue", PropertyGroup.Red, 220, 18, new Construction[]{
 						House._NewHouse(150,90),
@@ -309,7 +389,7 @@ public class GameBoard {
 						Hotel._NewHotel(400,1275)
 				}, brd),
 				//Community ChestC
-				CardDraw._NewCardDraw(communityChest, brd),
+				CardDraw._NewCardDraw("Community Chest", communityChest, brd),
 				//Pennsylvania Avenue -Property-Green
 				Property._MakeNewProperty("Pennsylvania Avenue", PropertyGroup.Green, 320, 28, new Construction[]{
 						House._NewHouse(200,150),
@@ -321,7 +401,7 @@ public class GameBoard {
 				//Short Line -Property-RailRoad
 				RailRoad._NewRail("Short Line", 25, 200, brd),
 				//Chance
-				CardDraw._NewCardDraw(chance, brd),
+				CardDraw._NewCardDraw("Chance", chance, brd),
 				//Park Place -Property-Blue
 				Property._MakeNewProperty("Park Place", PropertyGroup.Blue, 350, 35, new Construction[]{
 						House._NewHouse(200,175),
@@ -341,5 +421,9 @@ public class GameBoard {
 						Hotel._NewHotel(400,2000)
 				}, brd),
 		};
+		brd.board = brdspc;
+		communityChest = Deck.CommunityChestDeck(brd, communityChest);
+		chance = Deck.ChanceDeck(brd, chance);
+		return brdspc;
 	}
 }

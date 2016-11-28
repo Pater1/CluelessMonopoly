@@ -1,5 +1,7 @@
 package CSC110.monopoly.board.spaces;
 
+import java.io.IOException;
+
 import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.GameBoard;
 import CSC110.monopoly.board.PurchasableSpace;
@@ -23,13 +25,18 @@ public class RailRoad extends PurchasableSpace{
 		return rail;
 	}
 	
+	public void PayDoubleRent(Player whoLanded){
+		whoLanded.TakePlayerMoney(getRent()*2);
+		whoOwns.GivePlayerMoney(getRent()*2);
+	}
+	
 	public String[] Render(Player[] plas) {
 		return RenderAssistant.SpliceTile(new String[]{
 				name,
 				"Rent: " + getRent(),
 				(whoOwns == null) ? "Purchase: " + purchasePrice : "Mortgage: " + (purchasePrice),
 				RenderAssistant.FitPlayerName(plas),
-				"Owner: " + whoOwns
+				"Owner: " + ((whoOwns == null)? "null" : whoOwns.getPlayerName())
 		});
 	}
 

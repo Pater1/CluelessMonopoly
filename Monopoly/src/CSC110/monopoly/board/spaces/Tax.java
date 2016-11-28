@@ -18,14 +18,13 @@ public class Tax extends BoardSpace {
 	}
 
 	public void LandOnSpace(Player whoLanded) {
-		// TODO Take money from player at tax
+		whoLanded.TakePlayerMoney(taxAmount);
 	}
 
 	public void PassSpace(Player whoPassed) {
 		return;
 	}
 
-	@Override
 	public String[] Render(Player[] plas) {
 		return RenderAssistant.SpliceTile(new String[]{
 				taxName,
