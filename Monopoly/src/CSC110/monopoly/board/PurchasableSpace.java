@@ -2,6 +2,7 @@ package CSC110.monopoly.board;
 
 import java.io.IOException;
 import CSC110.monopoly.Input.AskForInput;
+import CSC110.monopoly.board.spaces.Property;
 import CSC110.monopoly.player.Player;
 
 public abstract class PurchasableSpace extends BoardSpace{
@@ -31,13 +32,31 @@ public abstract class PurchasableSpace extends BoardSpace{
 			System.out.println("Sorry, you don't have the money to purchase this property");
 		}
 	}
-	public void Sell(Player whoPurchase) {
-		whoPurchase.GivePlayerMoney(purchasePrice);
-		whoOwns = null;
+	public void Sell(Player whoPurchase, int forHowMuch) {
+		whoOwns.GivePlayerMoney(forHowMuch);
+		whoPurchase.TakePlayerMoney(forHowMuch);
+		whoOwns = whoPurchase;
 	}
 	public void Mortgage(Player whoPurchase) {
-		whoPurchase.GivePlayerMoney(purchasePrice/2);
-		//give Player debt
+		if(this instanceof Property){
+			Property prop = (Property)this;
+			if(!prop.NoDevelopmentsOnGroup()){
+				System.out.println("You must first sell all developments on this property group!");
+				return;
+			}
+		}
+		
+		if(whoPurchase.netWorth(purchasePrice) < 0){
+			System.out.println("The bank denys your loan request (It'd make you go bankrupt)");
+			return;
+		}
+		
+		whoPurchase.GivePlayerMoney(purchasePrice);
+		whoPurchase.GiveDebt(purchasePrice);
+	}
+	
+	public int PurchasePrice(){
+		return purchasePrice;
 	}
 	
 	protected abstract int getRent();

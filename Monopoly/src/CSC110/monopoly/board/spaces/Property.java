@@ -1,9 +1,7 @@
 package CSC110.monopoly.board.spaces;
 
-import java.io.IOException;
+import java.util.ArrayList;
 
-import CSC110.monopoly.Input.AskForInput;
-import CSC110.monopoly.board.BoardSpace;
 import CSC110.monopoly.board.GameBoard;
 import CSC110.monopoly.board.PurchasableSpace;
 import CSC110.monopoly.board.RenderAssistant;
@@ -20,11 +18,14 @@ public class Property extends PurchasableSpace {
 		Yellow,
 		Green,
 		Blue,
-		Utility
 	}
 	private PropertyGroup group;
 	private int rentCost;
  	private Construction[] developments;
+ 	
+ 	public PropertyGroup thisGroup(){
+ 		return group;
+ 	}
  	
  	protected int getRent(){
  		int ret = rentCost;
@@ -35,6 +36,33 @@ public class Property extends PurchasableSpace {
  			}
  		}
  		return ret;
+ 	}
+ 	
+ 	public int DevelopmentsWorth(){
+ 		int net = 0;
+ 		for(int i = 0; i < developments.length; i++){
+ 			if(developments[i].IsPurchased()) net += developments[i].SellPrice();
+ 		}
+ 		return net;
+ 	}
+ 	
+ 	public Construction GetDevelopment(boolean upgrade){
+ 		if(upgrade){
+ 			if(!HasHotel()){
+ 				for(int i = 0; i < developments.length; i++){
+ 					if(!developments[i].IsPurchased()){
+ 						return developments[i];
+ 					}
+ 				}
+ 			}
+ 		}else{
+ 			for(int i = developments.length-1; i >= 0; i--){
+ 				if(developments[i].IsPurchased()){
+ 					return developments[i];
+ 				}
+ 			}
+ 		}
+ 		return null;
  	}
  	
  	public int HousesCount(){
@@ -54,31 +82,23 @@ public class Property extends PurchasableSpace {
  	}
 
 	public void Upgrade(Player whoPurchase) {
-		Construction curCon = null;
-		if(!HasHotel()){
-			for(int i = 0; i < developments.length; i++){
-				if(!developments[i].IsPurchased()) curCon = developments[i];
-			}
-		}
+		Construction curCon = GetDevelopment(true);
 		
 		boolean bought = false;
 		if(curCon == null){
-			//no more developments to make
+			System.out.println("Looks like you have no more developments on this property to make...");
 		}else{
 			bought = curCon.Purchase(whoPurchase);
 		}
 		
-		if(bought && curCon instanceof Hotel){
+		if(bought && curCon.GetName().equals("Hotel")){
 			for(int i = 0; i >= developments.length; i++){
-				if(developments[i] instanceof House) developments[i].Demolish();
+				if(developments[i].GetName().equals("House")) developments[i].Demolish();
 			}
 		}
 	}
 	public void DownGrade(Player whoPurchase) {
-		Construction curCon = null;
-		for(int i = developments.length-1; i >= 0; i++){
-			if(developments[i].IsPurchased()) curCon = developments[i];
-		}
+		Construction curCon = GetDevelopment(false);
 		
 		if(curCon == null){
 			System.out.println("Looks like you have no more developments on this property to sell...");
@@ -108,5 +128,32 @@ public class Property extends PurchasableSpace {
 				RenderAssistant.FitPlayerName(plas),
 				"Owner: " + ((whoOwns == null)? "null" : whoOwns.getPlayerName())
 		});
+	}
+
+	public int RentWithout(Construction con) {
+		Construction uct = null;
+		for(int i = 0; i < developments.length; i++){
+			if(developments[i] == con){
+				if(i <= 0) return rentCost;
+				uct = developments[i-1];
+			}
+		}
+		
+		if(uct == null) return -1;
+		return uct.GetRent();
+	}
+
+	public void ClearDevelopments() {
+		for(int i = 0; i < developments.length; i++){
+			developments[i].Demolish();
+ 		}
+	}
+
+	public boolean NoDevelopmentsOnGroup() {
+		ArrayList<Property> inThisColorGroup = board.GetSpacesInColorGroup(group);
+		for(int i = 0; i < inThisColorGroup.size(); i++){
+			if(inThisColorGroup.get(i).DevelopmentsWorth() > 0) return false;
+		}
+		return true;
 	}
 }

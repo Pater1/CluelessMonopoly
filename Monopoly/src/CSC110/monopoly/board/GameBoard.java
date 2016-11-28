@@ -14,8 +14,6 @@ import CSC110.monopoly.board.spaces.Tax;
 import CSC110.monopoly.board.spaces.Utility;
 import CSC110.monopoly.board.spaces.Property.PropertyGroup;
 import CSC110.monopoly.board.spaces.modifiers.Construction;
-import CSC110.monopoly.board.spaces.modifiers.Hotel;
-import CSC110.monopoly.board.spaces.modifiers.House;
 import CSC110.monopoly.cards.Deck;
 import CSC110.monopoly.player.Player;
 
@@ -107,6 +105,16 @@ public class GameBoard {
 			}
 		}
 		return count;
+	}
+	public ArrayList<Property> GetSpacesInColorGroup(PropertyGroup group) {
+		ArrayList<Property> ret = new ArrayList<Property>();
+		for(int i = 0; i < board.length; i++){
+			if(board[i] instanceof Property){
+				Property prop = (Property)board[i];
+				if(prop.thisGroup() == group) ret.add(prop);
+			}
+		}
+		return ret;
 	}
 	
 	public int FindSpaceIndexByName(String space){
@@ -212,21 +220,21 @@ public class GameBoard {
 				Go._NewGo(200, brd),
 				//Mediteranian Avenue -Property-Brown
 				Property._MakeNewProperty("Mediteranian Avenue", PropertyGroup.Brown, 60, 2, new Construction[]{
-						House._NewHouse(50,10),
-						House._NewHouse(50,30),
-						House._NewHouse(50,90),
-						House._NewHouse(50,160),
-						Hotel._NewHotel(100,250)
+						new Construction("House",50,10),
+						new Construction("House",50,30),
+						new Construction("House",50,90),
+						new Construction("House",50,160),
+						new Construction("Hotel",100,250)
 				}, brd),
 				//Community Chest
 				CardDraw._NewCardDraw("Community Chest", communityChest, brd),
 				//Baltic Avenue -Property-Brown
 				Property._MakeNewProperty("Baltic Avenue", PropertyGroup.Brown, 60, 4, new Construction[]{
-						House._NewHouse(50,20),
-						House._NewHouse(50,60),
-						House._NewHouse(50,180),
-						House._NewHouse(50,320),
-						Hotel._NewHotel(100,450)
+						new Construction("House",50,20),
+						new Construction("House",50,60),
+						new Construction("House",50,180),
+						new Construction("House",50,320),
+						new Construction("Hotel",100,450)
 				}, brd),
 				//Income Tax
 				Tax._NewTax("Income Tax", 200, brd),
@@ -234,169 +242,169 @@ public class GameBoard {
 				RailRoad._NewRail("Reading Railroad", 25, 200, brd),
 				//Oriental Avenue -Property-LightBlue
 				Property._MakeNewProperty("Oriental Avenue", PropertyGroup.LightBlue, 100, 6, new Construction[]{
-						House._NewHouse(50,30),
-						House._NewHouse(50,90),
-						House._NewHouse(50,270),
-						House._NewHouse(50,400),
-						Hotel._NewHotel(100,550)
+						new Construction("House",50,30),
+						new Construction("House",50,90),
+						new Construction("House",50,270),
+						new Construction("House",50,400),
+						new Construction("Hotel",100,550)
 				}, brd),
 				//Chance
 				CardDraw._NewCardDraw("Chance", chance, brd),
 				//Vermont Avenue -Property-LightBlue
 				Property._MakeNewProperty("Vermont Avenue", PropertyGroup.LightBlue, 100, 6, new Construction[]{
-						House._NewHouse(50,30),
-						House._NewHouse(50,90),
-						House._NewHouse(50,270),
-						House._NewHouse(50,400),
-						Hotel._NewHotel(100,550)
+						new Construction("House",50,30),
+						new Construction("House",50,90),
+						new Construction("House",50,270),
+						new Construction("House",50,400),
+						new Construction("Hotel",100,550)
 				}, brd),
 				//Connecticut Avenue -Property-LightBlue
 				Property._MakeNewProperty("Connecticut Avenue", PropertyGroup.LightBlue, 120, 8, new Construction[]{
-						House._NewHouse(50,40),
-						House._NewHouse(50,100),
-						House._NewHouse(50,300),
-						House._NewHouse(50,450),
-						Hotel._NewHotel(100,600)
+						new Construction("House",50,40),
+						new Construction("House",50,100),
+						new Construction("House",50,300),
+						new Construction("House",50,450),
+						new Construction("Hotel",100,600)
 				}, brd),
 				//Jail --corner
 				Jail._NewJail(3, brd),
 				//St. Charles Place -Property-Purple
 				Property._MakeNewProperty("St. Charles Place", PropertyGroup.Purple, 140, 10, new Construction[]{
-						House._NewHouse(100,50),
-						House._NewHouse(100,150),
-						House._NewHouse(100,450),
-						House._NewHouse(100,625),
-						Hotel._NewHotel(200,750)
+						new Construction("House",100,50),
+						new Construction("House",100,150),
+						new Construction("House",100,450),
+						new Construction("House",100,625),
+						new Construction("Hotel",200,750)
 				}, brd),
 				//Electric Company -Utility
 				Utility._NewUtility("Electric Company", 150, 4, 10),
 				//States Avenue -Property-Purple
 				Property._MakeNewProperty("States Avenue", PropertyGroup.Purple, 140, 10, new Construction[]{
-						House._NewHouse(100,50),
-						House._NewHouse(100,150),
-						House._NewHouse(100,450),
-						House._NewHouse(100,625),
-						Hotel._NewHotel(200,750)
+						new Construction("House",100,50),
+						new Construction("House",100,150),
+						new Construction("House",100,450),
+						new Construction("House",100,625),
+						new Construction("Hotel",200,750)
 				}, brd),
 				//Virginia Avenue -Property-Purple
 				Property._MakeNewProperty("Virginia Avenue", PropertyGroup.Purple, 160, 12, new Construction[]{
-						House._NewHouse(100,60),
-						House._NewHouse(100,180),
-						House._NewHouse(100,500),
-						House._NewHouse(100,700),
-						Hotel._NewHotel(200,900)
+						new Construction("House",100,60),
+						new Construction("House",100,180),
+						new Construction("House",100,500),
+						new Construction("House",100,700),
+						new Construction("Hotel",200,900)
 				}, brd),
 				//Pennsylvania Railroad -RailRoad
 				RailRoad._NewRail("Pennsylvania Railroad", 25, 200, brd),
 				//St. James Place -Property-Orange
 				Property._MakeNewProperty("St. James Place", PropertyGroup.Orange, 180, 14, new Construction[]{
-						House._NewHouse(100,70),
-						House._NewHouse(100,200),
-						House._NewHouse(100,550),
-						House._NewHouse(100,750),
-						Hotel._NewHotel(200,950)
+						new Construction("House",100,70),
+						new Construction("House",100,200),
+						new Construction("House",100,550),
+						new Construction("House",100,750),
+						new Construction("Hotel",200,950)
 				}, brd),
 				//Community Chest
 				CardDraw._NewCardDraw("Community Chest", communityChest, brd),
 				//Tennessee Avenue -Property-Orange
 				Property._MakeNewProperty("Tennessee Avenue", PropertyGroup.Orange, 180, 14, new Construction[]{
-						House._NewHouse(100,70),
-						House._NewHouse(100,200),
-						House._NewHouse(100,550),
-						House._NewHouse(100,750),
-						Hotel._NewHotel(200,950)
+						new Construction("House",100,70),
+						new Construction("House",100,200),
+						new Construction("House",100,550),
+						new Construction("House",100,750),
+						new Construction("Hotel",200,950)
 				}, brd),
 				//New York Avenue -Property-Orange
 				Property._MakeNewProperty("New York Avenue", PropertyGroup.Orange, 200, 16, new Construction[]{
-						House._NewHouse(100,80),
-						House._NewHouse(100,220),
-						House._NewHouse(100,600),
-						House._NewHouse(100,800),
-						Hotel._NewHotel(200,1000)
+						new Construction("House",100,80),
+						new Construction("House",100,220),
+						new Construction("House",100,600),
+						new Construction("House",100,800),
+						new Construction("Hotel",200,1000)
 				}, brd),
 				//Free Parking --corner
 				FreeSpace._NewFreeSpace("Free Parking"),
 				//Kentucky Avenue -Property-Red
 				Property._MakeNewProperty("Kentucky Avenue", PropertyGroup.Red, 220, 18, new Construction[]{
-						House._NewHouse(150,90),
-						House._NewHouse(150,250),
-						House._NewHouse(150,700),
-						House._NewHouse(150,875),
-						Hotel._NewHotel(300,1050)
+						new Construction("House",150,90),
+						new Construction("House",150,250),
+						new Construction("House",150,700),
+						new Construction("House",150,875),
+						new Construction("Hotel",300,1050)
 				}, brd),
 				//Chance
 				CardDraw._NewCardDraw("Chance", chance, brd),
 				//Indiana Avenue -Property-Red
 				Property._MakeNewProperty("Indiana Avenue", PropertyGroup.Red, 220, 18, new Construction[]{
-						House._NewHouse(150,90),
-						House._NewHouse(150,250),
-						House._NewHouse(150,700),
-						House._NewHouse(150,875),
-						Hotel._NewHotel(300,1050)
+						new Construction("House",150,90),
+						new Construction("House",150,250),
+						new Construction("House",150,700),
+						new Construction("House",150,875),
+						new Construction("Hotel",300,1050)
 				}, brd),
 				//Illinois Avenue -Property-Red
 				Property._MakeNewProperty("Illinois Avenue", PropertyGroup.Red, 240, 20, new Construction[]{
-						House._NewHouse(150,100),
-						House._NewHouse(150,300),
-						House._NewHouse(150,750),
-						House._NewHouse(150,925),
-						Hotel._NewHotel(300,1100)
+						new Construction("House",150,100),
+						new Construction("House",150,300),
+						new Construction("House",150,750),
+						new Construction("House",150,925),
+						new Construction("Hotel",300,1100)
 				}, brd),
 				//B. & O. Railroad -Property-RailRoad
 				RailRoad._NewRail("B. & O. Railroad", 25, 200, brd),
 				//Atlantic Avenue -Property-Yellow
 				Property._MakeNewProperty("Atlantic Avenue", PropertyGroup.Yellow, 260, 22, new Construction[]{
-						House._NewHouse(150,110),
-						House._NewHouse(150,330),
-						House._NewHouse(150,800),
-						House._NewHouse(150,975),
-						Hotel._NewHotel(300,1150)
+						new Construction("House",150,110),
+						new Construction("House",150,330),
+						new Construction("House",150,800),
+						new Construction("House",150,975),
+						new Construction("Hotel",300,1150)
 				}, brd),
 				//Ventnor Avenue -Property-Yellow
 				Property._MakeNewProperty("Ventnor Avenue", PropertyGroup.Yellow, 260, 22, new Construction[]{
-						House._NewHouse(150,110),
-						House._NewHouse(150,330),
-						House._NewHouse(150,800),
-						House._NewHouse(150,975),
-						Hotel._NewHotel(300,1150)
+						new Construction("House",150,110),
+						new Construction("House",150,330),
+						new Construction("House",150,800),
+						new Construction("House",150,975),
+						new Construction("Hotel",300,1150)
 				}, brd),
 				//Water Works -Utility
 				Utility._NewUtility("Water Works", 150, 4, 10),
 				//Marvin Gardens -Property-Yellow
 				Property._MakeNewProperty("Marvin Gardens", PropertyGroup.Yellow, 280, 24, new Construction[]{
-						House._NewHouse(150,120),
-						House._NewHouse(150,360),
-						House._NewHouse(150,850),
-						House._NewHouse(150,1025),
-						Hotel._NewHotel(300,1200)
+						new Construction("House",150,120),
+						new Construction("House",150,360),
+						new Construction("House",150,850),
+						new Construction("House",150,1025),
+						new Construction("Hotel",300,1200)
 				}, brd),
 				//Go To Jail --corner
 				Jail._NewJail(brd),
 				//Pacific Avenue -Property-Green
 				Property._MakeNewProperty("Pacific Avenue", PropertyGroup.Green, 300, 26, new Construction[]{
-						House._NewHouse(200,130),
-						House._NewHouse(200,390),
-						House._NewHouse(200,900),
-						House._NewHouse(200,1100),
-						Hotel._NewHotel(400,1275)
+						new Construction("House",200,130),
+						new Construction("House",200,390),
+						new Construction("House",200,900),
+						new Construction("House",200,1100),
+						new Construction("Hotel",400,1275)
 				}, brd),
 				//North Carolina Avenue -Property-Green
 				Property._MakeNewProperty("North Carolina Avenue", PropertyGroup.Green, 300, 26, new Construction[]{
-						House._NewHouse(200,130),
-						House._NewHouse(200,390),
-						House._NewHouse(200,900),
-						House._NewHouse(200,1100),
-						Hotel._NewHotel(400,1275)
+						new Construction("House",200,130),
+						new Construction("House",200,390),
+						new Construction("House",200,900),
+						new Construction("House",200,1100),
+						new Construction("Hotel",400,1275)
 				}, brd),
 				//Community ChestC
 				CardDraw._NewCardDraw("Community Chest", communityChest, brd),
 				//Pennsylvania Avenue -Property-Green
 				Property._MakeNewProperty("Pennsylvania Avenue", PropertyGroup.Green, 320, 28, new Construction[]{
-						House._NewHouse(200,150),
-						House._NewHouse(200,450),
-						House._NewHouse(200,1000),
-						House._NewHouse(200,1200),
-						Hotel._NewHotel(400,1400)
+						new Construction("House",200,150),
+						new Construction("House",200,450),
+						new Construction("House",200,1000),
+						new Construction("House",200,1200),
+						new Construction("Hotel",400,1400)
 				}, brd),
 				//Short Line -Property-RailRoad
 				RailRoad._NewRail("Short Line", 25, 200, brd),
@@ -404,21 +412,21 @@ public class GameBoard {
 				CardDraw._NewCardDraw("Chance", chance, brd),
 				//Park Place -Property-Blue
 				Property._MakeNewProperty("Park Place", PropertyGroup.Blue, 350, 35, new Construction[]{
-						House._NewHouse(200,175),
-						House._NewHouse(200,500),
-						House._NewHouse(200,1100),
-						House._NewHouse(200,1300),
-						Hotel._NewHotel(400,1500)
+						new Construction("House",200,175),
+						new Construction("House",200,500),
+						new Construction("House",200,1100),
+						new Construction("House",200,1300),
+						new Construction("Hotel",400,1500)
 				}, brd),
 				//Luxury Tax
 				Tax._NewTax("Luxury Tax", 100, brd),
 				//Boardwalk -Property-Blue
 				Property._MakeNewProperty("Boardwalk", PropertyGroup.Blue, 400, 50, new Construction[]{
-						House._NewHouse(200,200),
-						House._NewHouse(200,600),
-						House._NewHouse(200,1400),
-						House._NewHouse(200,1700),
-						Hotel._NewHotel(400,2000)
+						new Construction("House",200,200),
+						new Construction("House",200,600),
+						new Construction("House",200,1400),
+						new Construction("House",200,1700),
+						new Construction("Hotel",400,2000)
 				}, brd),
 		};
 		brd.board = brdspc;

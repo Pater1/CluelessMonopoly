@@ -21,5 +21,11 @@ public interface Player {
 	
 	public void setPlayerLocation(int location);
 	
-	public void storePlayerCard(Card card);	
+	public void storePlayerCard(Card card);
+
+	public void removePlayerCard(Card card);
+
+	public int netWorth(int i);
+
+	public void GiveDebt(int purchasePrice);	
 }

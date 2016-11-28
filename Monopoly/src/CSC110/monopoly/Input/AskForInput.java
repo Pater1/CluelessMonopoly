@@ -57,4 +57,7 @@ public class AskForInput {
 	public static int numOfPlayers() throws IOException {
 		return StandardUIInput.promptForInt("How many players are there?", 1, 8);
 	}
+	public static int AskInt(String prompt) throws IOException {
+		return StandardUIInput.promptForInt(prompt, 0, Integer.MAX_VALUE);
+	}
 }

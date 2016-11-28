@@ -1,6 +1,8 @@
 package CSC110.monopoly.Game;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 import CSC110.monopoly.Input.AskForInput;
@@ -11,7 +13,7 @@ import CSC110.monopoly.player.Player;
 
 public class Game {
 
-	private Player[] players;
+	private Player[] players = new Player[0];
 	private GameBoard gameBoard;
 	
 	public Player[] GetPlayers(){
@@ -81,5 +83,25 @@ public class Game {
 		}
 		
 		return userInput;
+	}
+	
+	public static void _Stall() throws IOException{
+		System.out.println("\n[Hit Enter to Continue]\n");
+		new BufferedReader(new InputStreamReader(System.in)).readLine();
+	}
+
+	public void RemovePlayer(Piece piece) {
+		Player[] plas = new Player[players.length-1];
+		boolean hitPiece = false;
+		for(int i = 0; i < players.length; i++){
+			int index = (hitPiece)? i-1 : i;
+			if(players[i] == piece){
+				hitPiece = true;
+			}else{
+				plas[index] = players[i];
+			}
+		}
+		
+		players = plas;
 	}
 }
