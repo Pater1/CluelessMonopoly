@@ -326,6 +326,10 @@ public class Piece implements Player{
 			}
 		}
 		
+		if(propNames.size() <= 0){
+			return null;
+		}
+		
 		String[] strs = new String[propNames.size()];
 		for(int i = 0; i < strs.length; i++){
 			strs[i] = propNames.get(i);
