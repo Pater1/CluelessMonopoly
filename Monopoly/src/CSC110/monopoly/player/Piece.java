@@ -189,7 +189,7 @@ public class Piece implements Player{
 		Card sell = askForCardSelection();
 		
 		if(sell == null){
-			System.out.println("You have no Properties to sell!");
+			System.out.println("You have no Cards to sell!");
 			return;
 		}
 		

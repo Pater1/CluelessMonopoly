@@ -9,6 +9,8 @@ public abstract class PurchasableSpace extends BoardSpace{
 	protected int purchasePrice;
 	protected Player whoOwns;
 	
+	private boolean mortgaged = false;
+	
 	public boolean isOwned(){
 		if(whoOwns == null) return false;
 		return true;
@@ -38,6 +40,10 @@ public abstract class PurchasableSpace extends BoardSpace{
 		whoOwns = whoPurchase;
 	}
 	public void Mortgage(Player whoPurchase) {
+		if(mortgaged){
+			System.out.println("You can't mortgage the same Property twice!");
+			return;
+		}
 		if(this instanceof Property){
 			Property prop = (Property)this;
 			if(!prop.NoDevelopmentsOnGroup()){
@@ -53,6 +59,7 @@ public abstract class PurchasableSpace extends BoardSpace{
 		
 		whoPurchase.GivePlayerMoney(purchasePrice);
 		whoPurchase.GiveDebt(purchasePrice);
+		mortgaged = true;
 	}
 	
 	public int PurchasePrice(){
