@@ -199,7 +199,7 @@ public class Piece implements Player{
 		
 		while(salePrice == 0 && startPrice > 0){
 			for(int i = 0; i < players.size(); i++){
-				if(AskForInput.boolInput(players.get(i).getPlayerName() + ", would you like to buy " + sell.GetName() + " for $" + startPrice, "y", "n")){
+				if(players.get(i).howMuchMoneyOwned() >= salePrice && AskForInput.boolInput(players.get(i).getPlayerName() + ", would you like to buy " + sell.GetName() + " for $" + startPrice, "y", "n")){
 					buyer = players.get(i);
 					salePrice = startPrice;
 					startPrice += 10;
@@ -220,6 +220,9 @@ public class Piece implements Player{
 					salePrice = startPrice;
 					startPrice += 10;
 				}else{
+					if(players.get(i).howMuchMoneyOwned() < salePrice){
+						System.out.println(players.get(i).getPlayerName() + " is out of the bidding!");
+					}
 					players.remove(players.get(i));
 				}
 			}
@@ -264,11 +267,14 @@ public class Piece implements Player{
 		
 		while(players.size() > 1){
 			for(int i = 0; i < players.size(); i++){
-				if(AskForInput.boolInput(players.get(i).getPlayerName() + ", would you like to buy " + space.GetName() + " for $" + salePrice, "y", "n")){
+				if(players.get(i).howMuchMoneyOwned() >= salePrice && AskForInput.boolInput(players.get(i).getPlayerName() + ", would you like to buy " + space.GetName() + " for $" + salePrice, "y", "n")){
 					buyer = players.get(i);
 					salePrice = startPrice;
 					startPrice += 10;
 				}else{
+					if(players.get(i).howMuchMoneyOwned() < salePrice){
+						System.out.println(players.get(i).getPlayerName() + " is out of the bidding!");
+					}
 					players.remove(players.get(i));
 				}
 			}
