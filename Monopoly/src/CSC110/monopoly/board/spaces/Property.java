@@ -29,7 +29,7 @@ public class Property extends PurchasableSpace {
  	
  	protected int getRent(){
  		int ret = rentCost;
- 		for(int i = developments.length-1; i >= 0; i++){
+ 		for(int i = developments.length-1; i >= 0; i--){
  			if(developments[i].IsPurchased()){
  				ret = developments[i].GetRent();
  				break;
